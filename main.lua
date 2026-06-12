@@ -809,8 +809,7 @@ loadbtn.MouseButton1Click:Connect(function()
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Test.lua"))()
 		elseif selectedOption == "Counterblox" then
 			if version == "New" then
-				getgenv().SCRIPT_KEY = ""
-				loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/2438cfd42af811d55492e854318eeda24a73aa5d0b11a403ec1f7542abd8f2f0/download"))()
+				game:GetService("Players").LocalPlayer:Kick("This script is detected and will get u banned")
 			else
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
 			end
