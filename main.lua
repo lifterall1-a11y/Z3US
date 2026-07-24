@@ -1,832 +1,778 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/other.lua"))()
-local z3USLoader = Instance.new("ScreenGui")
-z3USLoader.Name = "Z3US Loader"
-z3USLoader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-z3USLoader.Parent = game:GetService("CoreGui")
-z3USLoader.ResetOnSpawn = false
-z3USLoader.DisplayOrder = 999999
-z3USLoader.IgnoreGuiInset = true
-
-local frame = Instance.new("Frame")
-frame.Name = "Frame"
-frame.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-frame.BorderSizePixel = 0
-frame.Position = UDim2.fromScale(0.0883, 0.11)
-frame.Size = UDim2.fromOffset(878, 550)
-
-frame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		local dragStart = input.Position
-		local frameStart = frame.Position
-
-		local connection
-		connection = game:GetService("UserInputService").InputChanged:Connect(function(inputChanged)
-			if inputChanged.UserInputType == Enum.UserInputType.MouseMovement then
-				local delta = inputChanged.Position - dragStart
-				frame.Position = UDim2.new(
-					frameStart.X.Scale,
-					frameStart.X.Offset + delta.X,
-					frameStart.Y.Scale,
-					frameStart.Y.Offset + delta.Y
-				)
-			end
-		end)
-
-		local endConnection
-		endConnection = game:GetService("UserInputService").InputEnded:Connect(function(inputEnded)
-			if inputEnded.UserInputType == Enum.UserInputType.MouseButton1 then
-				connection:Disconnect()
-				endConnection:Disconnect()
-			end
-		end)
-	end
-end)
-
-local uICorner = Instance.new("UICorner")
-uICorner.Name = "UICorner"
-uICorner.CornerRadius = UDim.new(0, 25)
-uICorner.Parent = frame
-
-local logo = Instance.new("ImageLabel")
-logo.Name = "Logo"
-logo.BackgroundTransparency = 1
-logo.BorderSizePixel = 0
-logo.Image = "rbxassetid://92661965333918"
-logo.Position = UDim2.fromScale(0.755, 0.2)
-logo.AnchorPoint = Vector2.new(0.5, 0.5)
-logo.Size = UDim2.fromOffset(175, 175)
-logo.Parent = frame
-
-local arsenal = Instance.new("Frame")
-arsenal.Name = "Arsenal"
-arsenal.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-arsenal.BackgroundTransparency = 0.9
-arsenal.BorderColor3 = Color3.fromRGB(0, 0, 0)
-arsenal.BorderSizePixel = 0
-arsenal.Position = UDim2.fromScale(0.03, 0.0415)
-arsenal.Size = UDim2.fromOffset(330, 65)
-
-local arsenalStroke = Instance.new("UIStroke")
-arsenalStroke.Name = "UIStroke"
-arsenalStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-arsenalStroke.Color = Color3.fromRGB(26, 29, 37)
-arsenalStroke.Thickness = 1.9
-arsenalStroke.Parent = arsenal
-
-local uICorner1 = Instance.new("UICorner")
-uICorner1.Name = "UICorner"
-uICorner1.CornerRadius = UDim.new(0, 25)
-uICorner1.Parent = arsenal
-
-local textLabel2 = Instance.new("TextLabel")
-textLabel2.Name = "TextLabel"
-textLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabel2.BackgroundTransparency = 1
-textLabel2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel2.BorderSizePixel = 0
-textLabel2.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel2.Position = UDim2.fromScale(0.2, 0.0462)
-textLabel2.Size = UDim2.fromOffset(197, 58)
-textLabel2.Text = "Arsenal"
-textLabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel2.TextSize = 62
-textLabel2.TextWrapped = true
-textLabel2.Parent = arsenal
-
-arsenal.Parent = frame
-
-local loadbtn = Instance.new("TextButton")
-loadbtn.Name = "Loadbtn"
-loadbtn.BackgroundColor3 = Color3.fromRGB(27, 29, 37)
-loadbtn.BorderColor3 = Color3.fromRGB(0, 0, 0)
-loadbtn.BorderSizePixel = 0
-loadbtn.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-loadbtn.Position = UDim2.fromScale(0.527, 0.656)
-loadbtn.Size = UDim2.fromOffset(405, 62)
-loadbtn.Text = "Load"
-loadbtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-loadbtn.TextScaled = true
-loadbtn.TextSize = 14
-loadbtn.TextWrapped = true
-
-local uICorner2 = Instance.new("UICorner")
-uICorner2.Name = "UICorner"
-uICorner2.CornerRadius = UDim.new(0, 25)
-uICorner2.Parent = loadbtn
-
-loadbtn.Parent = frame
-
-local closeButton = Instance.new("TextButton")
-closeButton.Name = "CloseButton"
-closeButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-closeButton.BackgroundTransparency = 1
-closeButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-closeButton.BorderSizePixel = 0
-closeButton.FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json")
-closeButton.Position = UDim2.fromScale(0.949, 0.0172)
-closeButton.Size = UDim2.fromOffset(44, 41)
-closeButton.Text = "X"
-closeButton.TextColor3 = Color3.fromRGB(58, 67, 98)
-closeButton.TextScaled = true
-closeButton.TextSize = 14
-closeButton.TextWrapped = true
-
-local uIStroke1 = Instance.new("UIStroke")
-uIStroke1.Name = "UIStroke"
-uIStroke1.Color = Color3.fromRGB(255, 255, 255)
-uIStroke1.Enabled = false
-uIStroke1.Thickness = 1.2
-uIStroke1.Parent = closeButton
-
-closeButton.Parent = frame
-
-local textLabel5 = Instance.new("TextLabel")
-textLabel5.Name = "TextLabel"
-textLabel5.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-textLabel5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel5.BorderSizePixel = 0
-textLabel5.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel5.Position = UDim2.fromScale(0.628, 0.821)
-textLabel5.Size = UDim2.fromOffset(200, 50)
-textLabel5.Text = "Thank you for using Z3US <3"
-textLabel5.TextColor3 = Color3.fromRGB(40, 58, 85)
-textLabel5.TextSize = 34
-textLabel5.Parent = frame
-
-local textLabel6 = Instance.new("TextLabel")
-textLabel6.Name = "TextLabel"
-textLabel6.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-textLabel6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel6.BorderSizePixel = 0
-textLabel6.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel6.Position = UDim2.fromScale(0.645, 0.447)
-textLabel6.Size = UDim2.fromOffset(200, 50)
-textLabel6.Text = "No Script Selected"
-textLabel6.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel6.TextSize = 34
-textLabel6.Parent = frame
-
-local planks = Instance.new("Frame")
-planks.Name = "Planks"
-planks.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-planks.BackgroundTransparency = 0.9
-planks.BorderColor3 = Color3.fromRGB(0, 0, 0)
-planks.BorderSizePixel = 0
-planks.Position = UDim2.fromScale(0.03, 0.17786)
-planks.Size = UDim2.fromOffset(330, 65)
-
-local planksStroke = Instance.new("UIStroke")
-planksStroke.Name = "UIStroke"
-planksStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-planksStroke.Color = Color3.fromRGB(26, 29, 37)
-planksStroke.Thickness = 1.9
-planksStroke.Parent = planks
-
-local uICorner3 = Instance.new("UICorner")
-uICorner3.Name = "UICorner"
-uICorner3.CornerRadius = UDim.new(0, 25)
-uICorner3.Parent = planks
-
-local textLabel7 = Instance.new("TextLabel")
-textLabel7.Name = "TextLabel"
-textLabel7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabel7.BackgroundTransparency = 1
-textLabel7.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel7.BorderSizePixel = 0
-textLabel7.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel7.Position = UDim2.fromScale(0.2, 0.0462)
-textLabel7.Size = UDim2.fromOffset(197, 58)
-textLabel7.Text = "Planks"
-textLabel7.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel7.TextSize = 62
-textLabel7.TextWrapped = true
-textLabel7.Parent = planks
-
-planks.Parent = frame
-
-local OneTap = Instance.new("Frame")
-OneTap.Name = "OneTap"
-OneTap.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-OneTap.BackgroundTransparency = 0.9
-OneTap.BorderColor3 = Color3.fromRGB(0, 0, 0)
-OneTap.BorderSizePixel = 0
-OneTap.Position = UDim2.fromScale(0.03, 0.58694)
-OneTap.Size = UDim2.fromOffset(330, 65)
-
-local OneTapStroke = Instance.new("UIStroke")
-OneTapStroke.Name = "UIStroke"
-OneTapStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-OneTapStroke.Color = Color3.fromRGB(26, 29, 37)
-OneTapStroke.Thickness = 1.9
-OneTapStroke.Parent = OneTap
-
-local uICornerOneTap = Instance.new("UICorner")
-uICornerOneTap.Name = "UICorner"
-uICornerOneTap.CornerRadius = UDim.new(0, 25)
-uICornerOneTap.Parent = OneTap
-
-local textLabelOneTap = Instance.new("TextLabel")
-textLabelOneTap.Name = "TextLabel"
-textLabelOneTap.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabelOneTap.BackgroundTransparency = 1
-textLabelOneTap.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabelOneTap.BorderSizePixel = 0
-textLabelOneTap.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabelOneTap.Position = UDim2.fromScale(0.15, 0.0462)
-textLabelOneTap.Size = UDim2.fromOffset(250, 58)
-textLabelOneTap.Text = "OneTap"
-textLabelOneTap.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabelOneTap.TextSize = 62
-textLabelOneTap.TextWrapped = true
-textLabelOneTap.Parent = OneTap
-
-OneTap.Parent = frame
-
-local universal = Instance.new("Frame")
-universal.Name = "Universal"
-universal.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-universal.BackgroundTransparency = 0.9
-universal.BorderColor3 = Color3.fromRGB(0, 0, 0)
-universal.BorderSizePixel = 0
-universal.Position = UDim2.fromScale(0.03, 0.7233)
-universal.Size = UDim2.fromOffset(330, 65)
-
-local universalStroke = Instance.new("UIStroke")
-universalStroke.Name = "UIStroke"
-universalStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-universalStroke.Color = Color3.fromRGB(26, 29, 37)
-universalStroke.Thickness = 1.9
-universalStroke.Parent = universal
-
-local uICorner4 = Instance.new("UICorner")
-uICorner4.Name = "UICorner"
-uICorner4.CornerRadius = UDim.new(0, 25)
-uICorner4.Parent = universal
-
-local textLabel8 = Instance.new("TextLabel")
-textLabel8.Name = "TextLabel"
-textLabel8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabel8.BackgroundTransparency = 1
-textLabel8.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel8.BorderSizePixel = 0
-textLabel8.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel8.Position = UDim2.fromScale(0.2, 0.0462)
-textLabel8.Size = UDim2.fromOffset(197, 58)
-textLabel8.Text = "Universal"
-textLabel8.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel8.TextSize = 62
-textLabel8.TextWrapped = true
-textLabel8.Parent = universal
-
-universal.Parent = frame
-
-local gunfightArena = Instance.new("Frame")
-gunfightArena.Name = "GunfightArena"
-gunfightArena.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-gunfightArena.BackgroundTransparency = 0.9
-gunfightArena.BorderColor3 = Color3.fromRGB(0, 0, 0)
-gunfightArena.BorderSizePixel = 0
-gunfightArena.Position = UDim2.fromScale(0.03, 0.45058)
-gunfightArena.Size = UDim2.fromOffset(330, 65)
-
-local gunfightArenaStroke = Instance.new("UIStroke")
-gunfightArenaStroke.Name = "UIStroke"
-gunfightArenaStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-gunfightArenaStroke.Color = Color3.fromRGB(26, 29, 37)
-gunfightArenaStroke.Thickness = 1.9
-gunfightArenaStroke.Parent = gunfightArena
-
-local uICorner5 = Instance.new("UICorner")
-uICorner5.Name = "UICorner"
-uICorner5.CornerRadius = UDim.new(0, 25)
-uICorner5.Parent = gunfightArena
-
-local textLabel9 = Instance.new("TextLabel")
-textLabel9.Name = "TextLabel"
-textLabel9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabel9.BackgroundTransparency = 1
-textLabel9.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel9.BorderSizePixel = 0
-textLabel9.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel9.Position = UDim2.fromScale(0.00639, 0.0462)
-textLabel9.Size = UDim2.fromOffset(322, 58)
-textLabel9.Text = "Gunfight Arena"
-textLabel9.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel9.TextSize = 62
-textLabel9.TextWrapped = true
-textLabel9.Parent = gunfightArena
-
-gunfightArena.Parent = frame
-
-local counterblox = Instance.new("Frame")
-counterblox.Name = "Counterblox"
-counterblox.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-counterblox.BackgroundTransparency = 0.9
-counterblox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-counterblox.BorderSizePixel = 0
-counterblox.Position = UDim2.fromScale(0.03, 0.31422)
-counterblox.Size = UDim2.fromOffset(330, 65)
-
-local counterbloxStroke = Instance.new("UIStroke")
-counterbloxStroke.Name = "UIStroke"
-counterbloxStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-counterbloxStroke.Color = Color3.fromRGB(26, 29, 37)
-counterbloxStroke.Thickness = 1.9
-counterbloxStroke.Parent = counterblox
-
-local uICorner6 = Instance.new("UICorner")
-uICorner6.Name = "UICorner"
-uICorner6.CornerRadius = UDim.new(0, 25)
-uICorner6.Parent = counterblox
-
-local textLabel10 = Instance.new("TextLabel")
-textLabel10.Name = "TextLabel"
-textLabel10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabel10.BackgroundTransparency = 1
-textLabel10.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel10.BorderSizePixel = 0
-textLabel10.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel10.Position = UDim2.fromScale(0.0276, 0.0462)
-textLabel10.Size = UDim2.fromOffset(311, 58)
-textLabel10.Text = "Counterblox"
-textLabel10.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel10.TextSize = 62
-textLabel10.TextWrapped = true
-textLabel10.Parent = counterblox
-
-counterblox.Parent = frame
-
-local rivals = Instance.new("Frame")
-rivals.Name = "Rivals"
-rivals.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-rivals.BackgroundTransparency = 0.9
-rivals.BorderColor3 = Color3.fromRGB(0, 0, 0)
-rivals.BorderSizePixel = 0
-rivals.Position = UDim2.fromScale(0.03, 0.85966)
-rivals.Size = UDim2.fromOffset(330, 65)
-
-local rivalsStroke = Instance.new("UIStroke")
-rivalsStroke.Name = "UIStroke"
-rivalsStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-rivalsStroke.Color = Color3.fromRGB(26, 29, 37)
-rivalsStroke.Thickness = 1.9
-rivalsStroke.Parent = rivals
-
-local uICorner7 = Instance.new("UICorner")
-uICorner7.Name = "UICorner"
-uICorner7.CornerRadius = UDim.new(0, 25)
-uICorner7.Parent = rivals
-
-local textLabel11 = Instance.new("TextLabel")
-textLabel11.Name = "TextLabel"
-textLabel11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-textLabel11.BackgroundTransparency = 1
-textLabel11.BorderColor3 = Color3.fromRGB(0, 0, 0)
-textLabel11.BorderSizePixel = 0
-textLabel11.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-textLabel11.Position = UDim2.fromScale(0.2, 0.0462)
-textLabel11.Size = UDim2.fromOffset(197, 58)
-textLabel11.Text = "Rivals"
-textLabel11.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel11.TextSize = 62
-textLabel11.TextWrapped = true
-textLabel11.Parent = rivals
-
-rivals.Parent = frame
-
-local blackidk = Instance.new("Frame")
-blackidk.Name = "blackidk"
-blackidk.Parent = frame
-blackidk.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-blackidk.BackgroundTransparency = 0.2
-blackidk.BorderSizePixel = 0
-blackidk.Size = UDim2.new(1, 0, 1, 0)
-blackidk.ZIndex = 8
-blackidk.Visible = false
-
-local uICorner111 = Instance.new("UICorner")
-uICorner111.Name = "UICorner"
-uICorner111.CornerRadius = UDim.new(0, 25)
-uICorner111.Parent = blackidk
-
-local confipanel = Instance.new("Frame")
-confipanel.Name = "confipanel"
-confipanel.Parent = frame
-confipanel.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-confipanel.BackgroundTransparency = 0
-confipanel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-confipanel.BorderSizePixel = 0
-confipanel.Position = UDim2.new(0.5, -200, 0.5, -75)
-confipanel.Size = UDim2.new(0, 400, 0, 150)
-confipanel.Visible = false
-confipanel.ZIndex = 10
-
-local confirmCorner = Instance.new("UICorner")
-confirmCorner.CornerRadius = UDim.new(0, 12)
-confirmCorner.Parent = confipanel
-
-local confirmStroke = Instance.new("UIStroke")
-confirmStroke.Color = Color3.fromRGB(26, 29, 37)
-confirmStroke.Thickness = 2
-confirmStroke.Parent = confipanel
-
-local confirmText = Instance.new("TextLabel")
-confirmText.Name = "ConfirmText"
-confirmText.Parent = confipanel
-confirmText.BackgroundTransparency = 1
-confirmText.Size = UDim2.new(1, -20, 0, 70)
-confirmText.Position = UDim2.new(0, 10, 0, 10)
-confirmText.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-confirmText.Text = "WARNING: This script is may not be undetected! Running it may result in a ban.\nDo you still want to select it?"
-confirmText.TextColor3 = Color3.fromRGB(255, 255, 255)
-confirmText.TextSize = 20
-confirmText.TextWrapped = true
-confirmText.TextXAlignment = Enum.TextXAlignment.Center
-
-local confirmYes = Instance.new("TextButton")
-confirmYes.Name = "ConfirmYes"
-confirmYes.Parent = confipanel
-confirmYes.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
-confirmYes.Size = UDim2.new(0, 100, 0, 35)
-confirmYes.Position = UDim2.new(0.5, -110, 1, -45)
-confirmYes.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-confirmYes.Text = "Yes"
-confirmYes.TextColor3 = Color3.fromRGB(255, 255, 255)
-confirmYes.TextSize = 18
-local yesCorner = Instance.new("UICorner")
-yesCorner.CornerRadius = UDim.new(0, 8)
-yesCorner.Parent = confirmYes
-
-local confirmNo = Instance.new("TextButton")
-confirmNo.Name = "ConfirmNo"
-confirmNo.Parent = confipanel
-confirmNo.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-confirmNo.Size = UDim2.new(0, 100, 0, 35)
-confirmNo.Position = UDim2.new(0.5, 10, 1, -45)
-confirmNo.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-confirmNo.Text = "No"
-confirmNo.TextColor3 = Color3.fromRGB(255, 255, 255)
-confirmNo.TextSize = 18
-local noCorner = Instance.new("UICorner")
-noCorner.CornerRadius = UDim.new(0, 8)
-noCorner.Parent = confirmNo
-
-local rivalsToggleContainer = Instance.new("Frame")
-rivalsToggleContainer.Name = "RivalsToggleContainer"
-rivalsToggleContainer.Parent = frame
-rivalsToggleContainer.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-rivalsToggleContainer.BackgroundTransparency = 0.9
-rivalsToggleContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
-rivalsToggleContainer.BorderSizePixel = 0
-rivalsToggleContainer.Position = UDim2.new(0.60, 0, 0.53, 0)
-rivalsToggleContainer.Size = UDim2.new(0, 280, 0, 65)
-rivalsToggleContainer.Visible = false
-
-local containerStroke = Instance.new("UIStroke")
-containerStroke.Parent = rivalsToggleContainer
-containerStroke.Color = Color3.fromRGB(26, 29, 37)
-containerStroke.Thickness = 2
-containerStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-
-local uICornerContainer = Instance.new("UICorner")
-uICornerContainer.CornerRadius = UDim.new(0, 25)
-uICornerContainer.Parent = rivalsToggleContainer
-
-local autoloadToggle = Instance.new("Frame")
-autoloadToggle.Name = "AutoloadToggle"
-autoloadToggle.Parent = rivalsToggleContainer
-autoloadToggle.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-autoloadToggle.BackgroundTransparency = 0.9
-autoloadToggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-autoloadToggle.BorderSizePixel = 0
-autoloadToggle.Position = UDim2.new(0.05, 0, 0.15, 0)
-autoloadToggle.Size = UDim2.new(0, 120, 0, 45)
-
-local toggleStroke = Instance.new("UIStroke")
-toggleStroke.Parent = autoloadToggle
-toggleStroke.Color = Color3.fromRGB(26, 29, 37)
-toggleStroke.Thickness = 2
-toggleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-
-local uICornerToggle = Instance.new("UICorner")
-uICornerToggle.CornerRadius = UDim.new(0, 15)
-uICornerToggle.Parent = autoloadToggle
-
-local toggleLabel = Instance.new("TextLabel")
-toggleLabel.Name = "ToggleLabel"
-toggleLabel.Parent = autoloadToggle
-toggleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-toggleLabel.BackgroundTransparency = 1
-toggleLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-toggleLabel.BorderSizePixel = 0
-toggleLabel.Position = UDim2.new(0.05, 0, 0, 0)
-toggleLabel.Size = UDim2.new(0, 70, 0, 45)
-toggleLabel.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-toggleLabel.Text = "Autoload:"
-toggleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-toggleLabel.TextSize = 16
-toggleLabel.TextXAlignment = Enum.TextXAlignment.Left
-
-local toggleButton = Instance.new("TextButton")
-toggleButton.Name = "ToggleButton"
-toggleButton.Parent = autoloadToggle
-toggleButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
-toggleButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-toggleButton.BorderSizePixel = 0
-toggleButton.Position = UDim2.new(0.60, 0, 0.15, 0)
-toggleButton.Size = UDim2.new(0, 40, 0, 30)
-toggleButton.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-toggleButton.Text = "ON"
-toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-toggleButton.TextSize = 14
-toggleButton.TextWrapped = true
-
-local uICornerToggleBtn = Instance.new("UICorner")
-uICornerToggleBtn.CornerRadius = UDim.new(0, 10)
-uICornerToggleBtn.Parent = toggleButton
-
-local silentloadToggle = Instance.new("Frame")
-silentloadToggle.Name = "SilentloadToggle"
-silentloadToggle.Parent = rivalsToggleContainer
-silentloadToggle.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-silentloadToggle.BackgroundTransparency = 0.9
-silentloadToggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-silentloadToggle.BorderSizePixel = 0
-silentloadToggle.Position = UDim2.new(0.55, 0, 0.15, 0)
-silentloadToggle.Size = UDim2.new(0, 120, 0, 45)
-
-local silentloadStroke = Instance.new("UIStroke")
-silentloadStroke.Parent = silentloadToggle
-silentloadStroke.Color = Color3.fromRGB(26, 29, 37)
-silentloadStroke.Thickness = 2
-silentloadStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-
-local uICornerSilentload = Instance.new("UICorner")
-uICornerSilentload.CornerRadius = UDim.new(0, 15)
-uICornerSilentload.Parent = silentloadToggle
-
-local silentloadLabel = Instance.new("TextLabel")
-silentloadLabel.Name = "SilentloadLabel"
-silentloadLabel.Parent = silentloadToggle
-silentloadLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-silentloadLabel.BackgroundTransparency = 1
-silentloadLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-silentloadLabel.BorderSizePixel = 0
-silentloadLabel.Position = UDim2.new(0.05, 0, 0, 0)
-silentloadLabel.Size = UDim2.new(0, 70, 0, 45)
-silentloadLabel.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-silentloadLabel.Text = "Silentload :"
-silentloadLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-silentloadLabel.TextSize = 16
-silentloadLabel.TextXAlignment = Enum.TextXAlignment.Left
-
-local silentloadButton = Instance.new("TextButton")
-silentloadButton.Name = "SilentloadButton"
-silentloadButton.Parent = silentloadToggle
-silentloadButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-silentloadButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-silentloadButton.BorderSizePixel = 0
-silentloadButton.Position = UDim2.new(0.60, 0, 0.15, 0)
-silentloadButton.Size = UDim2.new(0, 40, 0, 30)
-silentloadButton.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-silentloadButton.Text = "OFF"
-silentloadButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-silentloadButton.TextSize = 14
-silentloadButton.TextWrapped = true
-
-local uICornerSilentloadBtn = Instance.new("UICorner")
-uICornerSilentloadBtn.CornerRadius = UDim.new(0, 10)
-uICornerSilentloadBtn.Parent = silentloadButton
-
-frame.Parent = z3USLoader
-
-local selectedOption = nil
-local selectedColor = Color3.fromRGB(140, 155, 208)
-local defaultColor = Color3.fromRGB(26, 29, 37)
-local autoloadEnabled = true
-local silentloadEnabled = false
-local version = "New"
-
-local VersionToggle = Instance.new("Frame")
-VersionToggle.Name = "VersionToggle"
-VersionToggle.Parent = frame
-VersionToggle.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
-VersionToggle.BackgroundTransparency = 0.9
-VersionToggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-VersionToggle.BorderSizePixel = 0
-VersionToggle.Position = UDim2.new(0.60, 0, 0.53, 0)
-VersionToggle.Size = UDim2.new(0, 280, 0, 50)
-VersionToggle.Visible = false
-
-local versiontoggleStroke = Instance.new("UIStroke")
-versiontoggleStroke.Parent = VersionToggle
-versiontoggleStroke.Color = Color3.fromRGB(26, 29, 37)
-versiontoggleStroke.Thickness = 2
-versiontoggleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-
-local uICornerversionToggle = Instance.new("UICorner")
-uICornerversionToggle.CornerRadius = UDim.new(0, 25)
-uICornerversionToggle.Parent = VersionToggle
-
-local versionLabel = Instance.new("TextLabel")
-versionLabel.Name = "versionLabel"
-versionLabel.Parent = VersionToggle
-versionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-versionLabel.BackgroundTransparency = 1
-versionLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-versionLabel.BorderSizePixel = 0
-versionLabel.Position = UDim2.new(0.05, 0, 0, 0)
-versionLabel.Size = UDim2.new(0, 160, 0, 50)
-versionLabel.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-versionLabel.Text = "Version:"
-versionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-versionLabel.TextSize = 20
-versionLabel.TextXAlignment = Enum.TextXAlignment.Left
-
-local versionButton = Instance.new("TextButton")
-versionButton.Name = "versionButton"
-versionButton.Parent = VersionToggle
-versionButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
-versionButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-versionButton.BorderSizePixel = 0
-versionButton.Position = UDim2.new(0.65, 0, 0.15, 0)
-versionButton.Size = UDim2.new(0, 80, 0, 35)
-versionButton.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
-versionButton.Text = "New"
-versionButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-versionButton.TextSize = 18
-versionButton.TextWrapped = true
-
-local uICornerversionButton = Instance.new("UICorner")
-uICornerversionButton.CornerRadius = UDim.new(0, 15)
-uICornerversionButton.Parent = versionButton
-
-local function updateToggleAppearance()
-	if autoloadEnabled then
-		toggleButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
-		toggleButton.Text = "ON"
-	else
-		toggleButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-		toggleButton.Text = "OFF"
-	end
-	
-	if silentloadEnabled then
-		silentloadButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
-		silentloadButton.Text = "ON"
-	else
-		silentloadButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-		silentloadButton.Text = "OFF"
-	end
-
-	if version == "New" then
-		versionButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
-		versionButton.Text = "New"
-	else
-		versionButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-		versionButton.Text = "Old"
-	end
+local L_1_ = {};
+L_1_["1"] = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui") or gethui() ));
+L_1_["1"]["Name"] = [[Z3US Loader]];
+L_1_["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+L_1_["2"] = Instance.new("Frame", L_1_["1"]);
+L_1_["2"]["Active"] = true;
+L_1_["2"]["BorderSizePixel"] = 0;
+L_1_["2"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["2"]["Size"] = UDim2.new(0, 924, 0, 599);
+L_1_["2"]["Position"] = UDim2.new(0.06837, 0, 0.06367, 0);
+L_1_["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+
+L_1_["3"] = Instance.new("UICorner", L_1_["2"]);
+L_1_["3"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["4"] = Instance.new("TextButton", L_1_["2"]);
+L_1_["4"]["TextWrapped"] = true;
+L_1_["4"]["BorderSizePixel"] = 0;
+L_1_["4"]["TextSize"] = 14;
+L_1_["4"]["TextScaled"] = true;
+L_1_["4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["4"]["BackgroundColor3"] = Color3.fromRGB(28, 30, 38);
+L_1_["4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["4"]["Size"] = UDim2.new(0, 340, 0, 47);
+L_1_["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["4"]["Text"] = [[Load]];
+L_1_["4"]["Name"] = [[Loadbtn]];
+L_1_["4"]["Position"] = UDim2.new(0.54772, 0, 0.7887, 0);
+
+L_1_["5"] = Instance.new("UICorner", L_1_["4"]);
+L_1_["5"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["6"] = Instance.new("TextButton", L_1_["2"]);
+L_1_["6"]["TextWrapped"] = true;
+L_1_["6"]["BorderSizePixel"] = 0;
+L_1_["6"]["TextSize"] = 14;
+L_1_["6"]["TextScaled"] = true;
+L_1_["6"]["TextColor3"] = Color3.fromRGB(59, 68, 99);
+L_1_["6"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["6"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["6"]["BackgroundTransparency"] = 1;
+L_1_["6"]["Size"] = UDim2.new(0, 35, 0, 41);
+L_1_["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["6"]["Text"] = [[X]];
+L_1_["6"]["Position"] = UDim2.new(0.95953, 0, 0, 0);
+
+L_1_["7"] = Instance.new("UIStroke", L_1_["6"]);
+L_1_["7"]["Enabled"] = false;
+L_1_["7"]["Thickness"] = 1.2;
+L_1_["7"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+L_1_["8"] = Instance.new("TextLabel", L_1_["2"]);
+L_1_["8"]["BorderSizePixel"] = 0;
+L_1_["8"]["TextSize"] = 34;
+L_1_["8"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["8"]["TextColor3"] = Color3.fromRGB(41, 59, 86);
+L_1_["8"]["Size"] = UDim2.new(0, 200, 0, 50);
+L_1_["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["8"]["Text"] = [[Thank you for using Z3US <3]];
+L_1_["8"]["Position"] = UDim2.new(0.62131, 0, 0.87512, 0);
+
+L_1_["9"] = Instance.new("TextLabel", L_1_["2"]);
+L_1_["9"]["BorderSizePixel"] = 0;
+L_1_["9"]["TextSize"] = 34;
+L_1_["9"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["9"]["Size"] = UDim2.new(0, 200, 0, 50);
+L_1_["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["9"]["Text"] = [[{Selected Script}]];
+L_1_["9"]["Position"] = UDim2.new(0.62259, 0, 0.45803, 0);
+
+L_1_["a"] = Instance.new("ImageLabel", L_1_["2"]);
+L_1_["a"]["BorderSizePixel"] = 0;
+L_1_["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["a"]["Image"] = [[rbxassetid://92661965333918]];
+L_1_["a"]["Size"] = UDim2.new(0, 179, 0, 164);
+L_1_["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["a"]["BackgroundTransparency"] = 1;
+L_1_["a"]["Position"] = UDim2.new(0.63341, 0, 0.04289, 0);
+
+L_1_["b"] = Instance.new("Frame", L_1_["2"]);
+L_1_["b"]["BorderSizePixel"] = 0;
+L_1_["b"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["b"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["b"]["Position"] = UDim2.new(0.03421, 0, 0.03205, 0);
+L_1_["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["b"]["Name"] = [[Arsenal]];
+L_1_["b"]["BackgroundTransparency"] = 0.9;
+
+L_1_["c"] = Instance.new("UIStroke", L_1_["b"]);
+L_1_["c"]["Thickness"] = 1.9;
+L_1_["c"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["d"] = Instance.new("UICorner", L_1_["b"]);
+L_1_["d"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["e"] = Instance.new("TextLabel", L_1_["b"]);
+L_1_["e"]["TextWrapped"] = true;
+L_1_["e"]["BorderSizePixel"] = 0;
+L_1_["e"]["TextSize"] = 62;
+L_1_["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["e"]["BackgroundTransparency"] = 1;
+L_1_["e"]["Size"] = UDim2.new(0, 215, 0, 42);
+L_1_["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["e"]["Text"] = [[Arsenal]];
+L_1_["e"]["Position"] = UDim2.new(0.19023, 0, 0.12793, 0);
+
+L_1_["f"] = Instance.new("Frame", L_1_["2"]);
+L_1_["f"]["BorderSizePixel"] = 0;
+L_1_["f"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["f"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["f"]["Position"] = UDim2.new(0.03197, 0, 0.15223, 0);
+L_1_["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["f"]["Name"] = [[Counterblox]];
+L_1_["f"]["BackgroundTransparency"] = 0.9;
+
+L_1_["10"] = Instance.new("UIStroke", L_1_["f"]);
+L_1_["10"]["Thickness"] = 1.9;
+L_1_["10"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["10"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["11"] = Instance.new("UICorner", L_1_["f"]);
+L_1_["11"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["12"] = Instance.new("TextLabel", L_1_["f"]);
+L_1_["12"]["TextWrapped"] = true;
+L_1_["12"]["BorderSizePixel"] = 0;
+L_1_["12"]["TextSize"] = 62;
+L_1_["12"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["12"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["12"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["12"]["BackgroundTransparency"] = 1;
+L_1_["12"]["Size"] = UDim2.new(0, 257, 0, 42);
+L_1_["12"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["12"]["Text"] = [[Counterblox]];
+L_1_["12"]["Position"] = UDim2.new(0.12989, 0, 0.12793, 0);
+
+L_1_["13"] = Instance.new("Frame", L_1_["f"]);
+L_1_["13"]["Visible"] = false;
+L_1_["13"]["BorderSizePixel"] = 0;
+L_1_["13"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["13"]["Size"] = UDim2.new(0, 328, 0, 62);
+L_1_["13"]["Position"] = UDim2.new(1.38045, 0, 5.37208, 0);
+L_1_["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["13"]["Name"] = [[Options]];
+L_1_["13"]["BackgroundTransparency"] = 0.9;
+
+L_1_["14"] = Instance.new("UIStroke", L_1_["13"]);
+L_1_["14"]["Thickness"] = 1.9;
+L_1_["14"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["14"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["15"] = Instance.new("UICorner", L_1_["13"]);
+L_1_["15"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["16"] = Instance.new("Frame", L_1_["13"]);
+L_1_["16"]["BorderSizePixel"] = 0;
+L_1_["16"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["16"]["Size"] = UDim2.new(0, 303, 0, 47);
+L_1_["16"]["Position"] = UDim2.new(0.03506, 0, 0.12181, 0);
+L_1_["16"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["16"]["Name"] = [[Option1 (autoload)]];
+L_1_["16"]["BackgroundTransparency"] = 0.9;
+
+L_1_["17"] = Instance.new("UIStroke", L_1_["16"]);
+L_1_["17"]["Thickness"] = 1.9;
+L_1_["17"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["17"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["18"] = Instance.new("UICorner", L_1_["16"]);
+L_1_["18"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["19"] = Instance.new("TextLabel", L_1_["16"]);
+L_1_["19"]["TextWrapped"] = true;
+L_1_["19"]["BorderSizePixel"] = 0;
+L_1_["19"]["TextSize"] = 22;
+L_1_["19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["19"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["19"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["19"]["BackgroundTransparency"] = 1;
+L_1_["19"]["Size"] = UDim2.new(0, 82, 0, 21);
+L_1_["19"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["19"]["Text"] = [[Version]];
+L_1_["19"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
+
+L_1_["1a"] = Instance.new("TextButton", L_1_["16"]);
+L_1_["1a"]["TextWrapped"] = true;
+L_1_["1a"]["BorderSizePixel"] = 0;
+L_1_["1a"]["TextSize"] = 18;
+L_1_["1a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["1a"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
+L_1_["1a"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["1a"]["Size"] = UDim2.new(0, 90, 0, 29);
+L_1_["1a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["1a"]["Text"] = [[Old]];
+L_1_["1a"]["Name"] = [[Onoff]];
+L_1_["1a"]["Position"] = UDim2.new(0.65839, 0, 0.17975, 0);
+
+L_1_["1b"] = Instance.new("UICorner", L_1_["1a"]);
+L_1_["1b"]["CornerRadius"] = UDim.new(0, 7);
+
+L_1_["1c"] = Instance.new("Frame", L_1_["2"]);
+L_1_["1c"]["BorderSizePixel"] = 0;
+L_1_["1c"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["1c"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["1c"]["Position"] = UDim2.new(0.03197, 0, 0.26854, 0);
+L_1_["1c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["1c"]["Name"] = [[GunFight]];
+L_1_["1c"]["BackgroundTransparency"] = 0.9;
+
+L_1_["1d"] = Instance.new("UIStroke", L_1_["1c"]);
+L_1_["1d"]["Thickness"] = 1.9;
+L_1_["1d"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["1d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["1e"] = Instance.new("UICorner", L_1_["1c"]);
+L_1_["1e"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["1f"] = Instance.new("TextLabel", L_1_["1c"]);
+L_1_["1f"]["TextWrapped"] = true;
+L_1_["1f"]["BorderSizePixel"] = 0;
+L_1_["1f"]["TextSize"] = 62;
+L_1_["1f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["1f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["1f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["1f"]["BackgroundTransparency"] = 1;
+L_1_["1f"]["Size"] = UDim2.new(0, 337, 0, 42);
+L_1_["1f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["1f"]["Text"] = [[Gunfight Arena]];
+L_1_["1f"]["Position"] = UDim2.new(0.01495, 0, 0.12793, 0);
+
+L_1_["20"] = Instance.new("Frame", L_1_["2"]);
+L_1_["20"]["BorderSizePixel"] = 0;
+L_1_["20"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["20"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["20"]["Position"] = UDim2.new(0.03056, 0, 0.38577, 0);
+L_1_["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["20"]["Name"] = [[Universal]];
+L_1_["20"]["BackgroundTransparency"] = 0.9;
+
+L_1_["21"] = Instance.new("UIStroke", L_1_["20"]);
+L_1_["21"]["Thickness"] = 1.9;
+L_1_["21"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["21"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["22"] = Instance.new("UICorner", L_1_["20"]);
+L_1_["22"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["23"] = Instance.new("TextLabel", L_1_["20"]);
+L_1_["23"]["TextWrapped"] = true;
+L_1_["23"]["BorderSizePixel"] = 0;
+L_1_["23"]["TextSize"] = 62;
+L_1_["23"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["23"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["23"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["23"]["BackgroundTransparency"] = 1;
+L_1_["23"]["Size"] = UDim2.new(0, 205, 0, 42);
+L_1_["23"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["23"]["Text"] = [[Universal]];
+L_1_["23"]["Position"] = UDim2.new(0.20747, 0, 0.12793, 0);
+
+L_1_["24"] = Instance.new("Frame", L_1_["2"]);
+L_1_["24"]["BorderSizePixel"] = 0;
+L_1_["24"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["24"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["24"]["Position"] = UDim2.new(0.03275, 0, 0.50963, 0);
+L_1_["24"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["24"]["Name"] = [[Rivals]];
+L_1_["24"]["BackgroundTransparency"] = 0.9;
+
+L_1_["25"] = Instance.new("UIStroke", L_1_["24"]);
+L_1_["25"]["Thickness"] = 1.9;
+L_1_["25"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["25"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["26"] = Instance.new("UICorner", L_1_["24"]);
+L_1_["26"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["27"] = Instance.new("Frame", L_1_["24"]);
+L_1_["27"]["Visible"] = false;
+L_1_["27"]["BorderSizePixel"] = 0;
+L_1_["27"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["27"]["Size"] = UDim2.new(0, 328, 0, 62);
+L_1_["27"]["Position"] = UDim2.new(1.38333, 0, 1.69967, 0);
+L_1_["27"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["27"]["Name"] = [[Options]];
+L_1_["27"]["BackgroundTransparency"] = 0.9;
+
+L_1_["28"] = Instance.new("UIStroke", L_1_["27"]);
+L_1_["28"]["Thickness"] = 1.9;
+L_1_["28"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["28"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["29"] = Instance.new("UICorner", L_1_["27"]);
+L_1_["29"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["2a"] = Instance.new("Frame", L_1_["27"]);
+L_1_["2a"]["BorderSizePixel"] = 0;
+L_1_["2a"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["2a"]["Size"] = UDim2.new(0, 148, 0, 47);
+L_1_["2a"]["Position"] = UDim2.new(0.03506, 0, 0.12181, 0);
+L_1_["2a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["2a"]["Name"] = [[Option1 (autoload)]];
+L_1_["2a"]["BackgroundTransparency"] = 0.9;
+
+L_1_["2b"] = Instance.new("UIStroke", L_1_["2a"]);
+L_1_["2b"]["Thickness"] = 1.9;
+L_1_["2b"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["2b"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["2c"] = Instance.new("UICorner", L_1_["2a"]);
+L_1_["2c"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["2d"] = Instance.new("TextLabel", L_1_["2a"]);
+L_1_["2d"]["TextWrapped"] = true;
+L_1_["2d"]["BorderSizePixel"] = 0;
+L_1_["2d"]["TextSize"] = 22;
+L_1_["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["2d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["2d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["2d"]["BackgroundTransparency"] = 1;
+L_1_["2d"]["Size"] = UDim2.new(0, 82, 0, 21);
+L_1_["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["2d"]["Text"] = [[Autoload]];
+L_1_["2d"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
+
+L_1_["2e"] = Instance.new("TextButton", L_1_["2a"]);
+L_1_["2e"]["TextWrapped"] = true;
+L_1_["2e"]["BorderSizePixel"] = 0;
+L_1_["2e"]["TextSize"] = 18;
+L_1_["2e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["2e"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
+L_1_["2e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["2e"]["Size"] = UDim2.new(0, 46, 0, 29);
+L_1_["2e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["2e"]["Text"] = [[On]];
+L_1_["2e"]["Name"] = [[Onoff]];
+L_1_["2e"]["Position"] = UDim2.new(0.64189, 0, 0.17975, 0);
+
+L_1_["2f"] = Instance.new("UICorner", L_1_["2e"]);
+L_1_["2f"]["CornerRadius"] = UDim.new(0, 7);
+
+L_1_["30"] = Instance.new("Frame", L_1_["27"]);
+L_1_["30"]["BorderSizePixel"] = 0;
+L_1_["30"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["30"]["Size"] = UDim2.new(0, 148, 0, 47);
+L_1_["30"]["Position"] = UDim2.new(0.51067, 0, 0.12181, 0);
+L_1_["30"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["30"]["Name"] = [[Option2 (silentload)]];
+L_1_["30"]["BackgroundTransparency"] = 0.9;
+
+L_1_["31"] = Instance.new("UIStroke", L_1_["30"]);
+L_1_["31"]["Thickness"] = 1.9;
+L_1_["31"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["31"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["32"] = Instance.new("UICorner", L_1_["30"]);
+L_1_["32"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["33"] = Instance.new("TextButton", L_1_["30"]);
+L_1_["33"]["TextWrapped"] = true;
+L_1_["33"]["BorderSizePixel"] = 0;
+L_1_["33"]["TextSize"] = 18;
+L_1_["33"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["33"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
+L_1_["33"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["33"]["Size"] = UDim2.new(0, 46, 0, 29);
+L_1_["33"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["33"]["Text"] = [[On]];
+L_1_["33"]["Name"] = [[Onoff]];
+L_1_["33"]["Position"] = UDim2.new(0.64865, 0, 0.17975, 0);
+
+L_1_["34"] = Instance.new("UICorner", L_1_["33"]);
+L_1_["34"]["CornerRadius"] = UDim.new(0, 7);
+
+L_1_["35"] = Instance.new("TextLabel", L_1_["30"]);
+L_1_["35"]["TextWrapped"] = true;
+L_1_["35"]["BorderSizePixel"] = 0;
+L_1_["35"]["TextSize"] = 22;
+L_1_["35"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["35"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["35"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["35"]["BackgroundTransparency"] = 1;
+L_1_["35"]["Size"] = UDim2.new(0, 82, 0, 21);
+L_1_["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["35"]["Text"] = [[Silentload]];
+L_1_["35"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
+
+L_1_["36"] = Instance.new("Frame", L_1_["27"]);
+L_1_["36"]["BorderSizePixel"] = 0;
+L_1_["36"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["36"]["Size"] = UDim2.new(0, 167, 0, 62);
+L_1_["36"]["Position"] = UDim2.new(0.23446, 0, -1.099, 0);
+L_1_["36"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["36"]["Name"] = [[Version]];
+L_1_["36"]["BackgroundTransparency"] = 0.9;
+
+L_1_["37"] = Instance.new("UIStroke", L_1_["36"]);
+L_1_["37"]["Thickness"] = 1.9;
+L_1_["37"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["37"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["38"] = Instance.new("UICorner", L_1_["36"]);
+L_1_["38"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["39"] = Instance.new("Frame", L_1_["36"]);
+L_1_["39"]["BorderSizePixel"] = 0;
+L_1_["39"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["39"]["Size"] = UDim2.new(0, 148, 0, 47);
+L_1_["39"]["Position"] = UDim2.new(0.05902, 0, 0.10568, 0);
+L_1_["39"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["39"]["Name"] = [[Option1 (autoload)]];
+L_1_["39"]["BackgroundTransparency"] = 0.9;
+
+L_1_["3a"] = Instance.new("UIStroke", L_1_["39"]);
+L_1_["3a"]["Thickness"] = 1.9;
+L_1_["3a"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["3a"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["3b"] = Instance.new("UICorner", L_1_["39"]);
+L_1_["3b"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["3c"] = Instance.new("TextLabel", L_1_["39"]);
+L_1_["3c"]["TextWrapped"] = true;
+L_1_["3c"]["BorderSizePixel"] = 0;
+L_1_["3c"]["TextSize"] = 22;
+L_1_["3c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["3c"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["3c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["3c"]["BackgroundTransparency"] = 1;
+L_1_["3c"]["Size"] = UDim2.new(0, 82, 0, 21);
+L_1_["3c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["3c"]["Text"] = [[Version]];
+L_1_["3c"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
+
+L_1_["3d"] = Instance.new("TextButton", L_1_["39"]);
+L_1_["3d"]["TextWrapped"] = true;
+L_1_["3d"]["BorderSizePixel"] = 0;
+L_1_["3d"]["TextSize"] = 18;
+L_1_["3d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["3d"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
+L_1_["3d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["3d"]["Size"] = UDim2.new(0, 46, 0, 29);
+L_1_["3d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["3d"]["Text"] = [[V2]];
+L_1_["3d"]["Name"] = [[Onoff]];
+L_1_["3d"]["Position"] = UDim2.new(0.64189, 0, 0.17975, 0);
+
+L_1_["3e"] = Instance.new("UICorner", L_1_["3d"]);
+L_1_["3e"]["CornerRadius"] = UDim.new(0, 7);
+
+L_1_["3f"] = Instance.new("TextLabel", L_1_["24"]);
+L_1_["3f"]["TextWrapped"] = true;
+L_1_["3f"]["BorderSizePixel"] = 0;
+L_1_["3f"]["TextSize"] = 62;
+L_1_["3f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["3f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["3f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["3f"]["BackgroundTransparency"] = 1;
+L_1_["3f"]["Size"] = UDim2.new(0, 205, 0, 42);
+L_1_["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["3f"]["Text"] = [[Rivals]];
+L_1_["3f"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
+
+L_1_["40"] = Instance.new("Frame", L_1_["2"]);
+L_1_["40"]["BorderSizePixel"] = 0;
+L_1_["40"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["40"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["40"]["Position"] = UDim2.new(0.03275, 0, 0.62843, 0);
+L_1_["40"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["40"]["Name"] = [[Overkill]];
+L_1_["40"]["BackgroundTransparency"] = 0.9;
+
+L_1_["41"] = Instance.new("UIStroke", L_1_["40"]);
+L_1_["41"]["Thickness"] = 1.9;
+L_1_["41"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["41"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["42"] = Instance.new("UICorner", L_1_["40"]);
+L_1_["42"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["43"] = Instance.new("TextLabel", L_1_["40"]);
+L_1_["43"]["TextWrapped"] = true;
+L_1_["43"]["BorderSizePixel"] = 0;
+L_1_["43"]["TextSize"] = 62;
+L_1_["43"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["43"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["43"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["43"]["BackgroundTransparency"] = 1;
+L_1_["43"]["Size"] = UDim2.new(0, 205, 0, 42);
+L_1_["43"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["43"]["Text"] = [[Overkill]];
+L_1_["43"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
+
+L_1_["44"] = Instance.new("Frame", L_1_["40"]);
+L_1_["44"]["Visible"] = false;
+L_1_["44"]["BorderSizePixel"] = 0;
+L_1_["44"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["44"]["Size"] = UDim2.new(0, 328, 0, 51);
+L_1_["44"]["Position"] = UDim2.new(1.38333, 0, 0.57898, 0);
+L_1_["44"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["44"]["Name"] = [[Key]];
+L_1_["44"]["BackgroundTransparency"] = 0.9;
+
+L_1_["45"] = Instance.new("UIStroke", L_1_["44"]);
+L_1_["45"]["Thickness"] = 1.9;
+L_1_["45"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["45"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["46"] = Instance.new("UICorner", L_1_["44"]);
+L_1_["46"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["47"] = Instance.new("TextBox", L_1_["44"]);
+L_1_["47"]["CursorPosition"] = -1;
+L_1_["47"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+L_1_["47"]["BorderSizePixel"] = 0;
+L_1_["47"]["TextWrapped"] = true;
+L_1_["47"]["TextSize"] = 14;
+L_1_["47"]["TextColor3"] = Color3.fromRGB(255, 255, 255);  -- Changed to white
+L_1_["47"]["TextScaled"] = true;
+L_1_["47"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["47"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["47"]["PlaceholderText"] = [[Key]];
+L_1_["47"]["Size"] = UDim2.new(0, 302, 0, 47);
+L_1_["47"]["Position"] = UDim2.new(0.05183, 0, 0.1129, 0);
+L_1_["47"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["47"]["Text"] = [[]];
+L_1_["47"]["BackgroundTransparency"] = 1;
+
+L_1_["48"] = Instance.new("Frame", L_1_["2"]);
+L_1_["48"]["BorderSizePixel"] = 0;
+L_1_["48"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["48"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["48"]["Position"] = UDim2.new(0.0317, 0, 0.74686, 0);
+L_1_["48"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["48"]["Name"] = [[Planks]];
+L_1_["48"]["BackgroundTransparency"] = 0.9;
+
+L_1_["49"] = Instance.new("UIStroke", L_1_["48"]);
+L_1_["49"]["Thickness"] = 1.9;
+L_1_["49"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["49"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["4a"] = Instance.new("UICorner", L_1_["48"]);
+L_1_["4a"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["4b"] = Instance.new("TextLabel", L_1_["48"]);
+L_1_["4b"]["TextWrapped"] = true;
+L_1_["4b"]["BorderSizePixel"] = 0;
+L_1_["4b"]["TextSize"] = 62;
+L_1_["4b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["4b"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["4b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["4b"]["BackgroundTransparency"] = 1;
+L_1_["4b"]["Size"] = UDim2.new(0, 205, 0, 42);
+L_1_["4b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["4b"]["Text"] = [[Planks]];
+L_1_["4b"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
+
+L_1_["4c"] = Instance.new("Frame", L_1_["2"]);
+L_1_["4c"]["BorderSizePixel"] = 0;
+L_1_["4c"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
+L_1_["4c"]["Size"] = UDim2.new(0, 348, 0, 58);
+L_1_["4c"]["Position"] = UDim2.new(0.0317, 0, 0.86864, 0);
+L_1_["4c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["4c"]["Name"] = [[OneTap]];
+L_1_["4c"]["BackgroundTransparency"] = 0.9;
+
+L_1_["4d"] = Instance.new("UIStroke", L_1_["4c"]);
+L_1_["4d"]["Thickness"] = 1.9;
+L_1_["4d"]["Color"] = Color3.fromRGB(27, 30, 38);
+L_1_["4d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+L_1_["4e"] = Instance.new("UICorner", L_1_["4c"]);
+L_1_["4e"]["CornerRadius"] = UDim.new(0, 25);
+
+L_1_["4f"] = Instance.new("TextLabel", L_1_["4c"]);
+L_1_["4f"]["TextWrapped"] = true;
+L_1_["4f"]["BorderSizePixel"] = 0;
+L_1_["4f"]["TextSize"] = 62;
+L_1_["4f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["4f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+L_1_["4f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+L_1_["4f"]["BackgroundTransparency"] = 1;
+L_1_["4f"]["Size"] = UDim2.new(0, 205, 0, 42);
+L_1_["4f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+L_1_["4f"]["Text"] = [[One Tap]];
+L_1_["4f"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
+
+local userinpt = cloneref(game:GetService("UserInputService"))
+local mainGui = L_1_["1"]
+local mainFrame = L_1_["2"]
+local loadBtn = L_1_["4"]
+local closeBtn = L_1_["6"]
+local selectedScriptLabel = L_1_["9"]
+local counterbloxVersionBtn = L_1_["1a"]
+local rivalsAutoloadBtn = L_1_["2e"]
+local rivalsSilentloadBtn = L_1_["33"]
+local rivalsVersionBtn = L_1_["3d"]
+local counterbloxOptionsFrame = L_1_["13"]
+local rivalsOptionsFrame = L_1_["27"]
+local overkillKeyFrame = L_1_["44"]
+local overkillKeyBox = L_1_["47"]
+
+local selectedGame,selectedStroke,counterbloxVersion,rivalsAutoload, rivalsSilentload, rivalsVersion, overkillKey = "", nil, "Old", true, false, "V2", ""
+function kys()
+    pcall(function()
+        makefolder("Z3US/Overkill")
+    end)
+    local success, key = pcall(function()
+        return readfile("Z3US/Overkill/key.json")
+    end)
+    if success and key and key ~= "" then
+        overkillKey = key
+        overkillKeyBox.Text = key
+    end
+end
+kys()
+
+local gameFrames = {
+    ["Arsenal"] = L_1_["b"],
+    ["Counterblox"] = L_1_["f"],
+    ["GunFight"] = L_1_["1c"],
+    ["Universal"] = L_1_["20"],
+    ["Rivals"] = L_1_["24"],
+    ["Overkill"] = L_1_["40"],
+    ["Planks"] = L_1_["48"],
+    ["OneTap"] = L_1_["4c"]
+}
+
+for gameName, frame in gameFrames do
+    local textLabel = frame:FindFirstChildWhichIsA("TextLabel")
+    if textLabel then
+        textLabel.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                selectedGame = gameName
+                selectedScriptLabel.Text = "Selected: " .. gameName
+
+                if selectedStroke then
+                    selectedStroke.Color = Color3.fromRGB(27, 30, 38)
+                end
+
+                local newStroke = frame:FindFirstChildOfClass("UIStroke")
+                if newStroke then
+                    newStroke.Color = Color3.fromRGB(140, 155, 208)
+                    selectedStroke = newStroke
+                end
+
+                counterbloxOptionsFrame.Visible = (gameName == "Counterblox")
+                rivalsOptionsFrame.Visible = (gameName == "Rivals")
+                --overkillKeyFrame.Visible = (gameName == "Overkill")
+            end
+        end)
+    end
 end
 
-local function selectScript(scriptFrame, scriptName)
-	arsenalStroke.Color = defaultColor
-	planksStroke.Color = defaultColor
-	rivalsStroke.Color = defaultColor
-	counterbloxStroke.Color = defaultColor
-	universalStroke.Color = defaultColor
-	gunfightArenaStroke.Color = defaultColor
-	OneTapStroke.Color = defaultColor
-
-	rivalsToggleContainer.Visible = false
-	VersionToggle.Visible = false
-
-	if scriptFrame then
-		scriptFrame:FindFirstChildOfClass("UIStroke").Color = selectedColor
-		selectedOption = scriptName
-		textLabel6.Text = scriptName
-
-		if scriptName == "Rivals" then
-			rivalsToggleContainer.Visible = true
-			updateToggleAppearance()
-		end
-
-		if scriptName == "Counterblox" then
-			VersionToggle.Visible = true
-			updateToggleAppearance()
-		end
-	else 
-		selectedOption = nil
-		textLabel6.Text = "No Script Selected"
-	end
-end
-
-arsenal.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(arsenal, "Arsenal")
-	end
+closeBtn.MouseButton1Click:Connect(function()
+    mainGui:Destroy()
 end)
 
-planks.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(planks, "Planks")
-	end
+local dragging,dragStart,startPos = false, nil, nil
+mainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = mainFrame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
 end)
 
-OneTap.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(OneTap, "OneTap")
-	end
+userinpt.InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStart
+        mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
 end)
 
-rivals.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		confipanel.Visible = true
-		blackidk.Visible = true
-	end
+counterbloxVersionBtn.MouseButton1Click:Connect(function()
+    if counterbloxVersionBtn.Text == "Old" then
+        counterbloxVersionBtn.Text = "New"
+        counterbloxVersion = "New"
+    else
+        counterbloxVersionBtn.Text = "Old"
+        counterbloxVersion = "Old"
+    end
 end)
 
-confirmYes.MouseButton1Click:Connect(function()
-	confipanel.Visible = false
-	blackidk.Visible = false
-	selectScript(rivals, "Rivals")
+rivalsAutoloadBtn.MouseButton1Click:Connect(function()
+    if rivalsAutoloadBtn.Text == "On" then
+        rivalsAutoloadBtn.Text = "Off"
+        rivalsAutoload = false
+    else
+        rivalsAutoloadBtn.Text = "On"
+        rivalsAutoload = true
+    end
 end)
 
-confirmNo.MouseButton1Click:Connect(function()
-	confipanel.Visible = false
-	blackidk.Visible = false
+rivalsSilentloadBtn.MouseButton1Click:Connect(function()
+    if rivalsSilentloadBtn.Text == "On" then
+        rivalsSilentloadBtn.Text = "Off"
+        rivalsSilentload = false
+    else
+        rivalsSilentloadBtn.Text = "On"
+        rivalsSilentload = true
+    end
 end)
 
-counterblox.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(counterblox, "Counterblox")
-	end
+rivalsVersionBtn.MouseButton1Click:Connect(function()
+    if rivalsVersionBtn.Text == "V2" then
+        rivalsVersionBtn.Text = "V1"
+        rivalsVersion = "V1"
+    else
+        rivalsVersionBtn.Text = "V2"
+        rivalsVersion = "V2"
+    end
 end)
-
-gunfightArena.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(gunfightArena, "Gunfight Arena")
-	end
+overkillKeyBox.FocusLost:Connect(function(enterPressed)
+    overkillKey = overkillKeyBox.Text
+    pcall(function()
+        makefolder("Z3US/Overkill")
+        writefile("Z3US/Overkill/key.json", overkillKeyBox.Text)
+    end)
 end)
+loadBtn.MouseButton1Click:Connect(function()
+    if selectedGame == "" then return end
 
-universal.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(universal, "Universal")
-	end
+    if selectedGame == "Overkill" then
+        loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/d603ee0150fbdeb809a036562925966619d3e145a77b4d07b222b0612022ab8f/download"))()
+    elseif selectedGame == "Counterblox" then
+        if counterbloxVersion == "New" then
+            cloneref(game:GetService("Players").LocalPlayer:Kick("This script is detected and will get u banned"))
+        else
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
+        end
+
+    elseif selectedGame == "GunFight" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Gunfight%20Arena.lua"))()
+
+    elseif selectedGame == "Universal" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Universal.lua"))()
+
+    elseif selectedGame == "Rivals" then
+        if rivalsVersion == "V2" then
+            getgenv().autoload = rivalsAutoload
+            getgenv().silentload = rivalsSilentload
+            getgenv().SCRIPT_KEY = ""
+            loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/2438cfd42af811d55492e854318eeda24a73aa5d0b11a403ec1f7542abd8f2f0/download"))()
+        else
+            repeat task.wait() until game:IsLoaded()
+            repeat task.wait() until cloneref(game:GetService("Players").LocalPlayer) and cloneref(game:GetService("Players").LocalPlayer.Character)
+            repeat task.wait() until not cloneref(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("LoadingScreen"))
+            getgenv().autoload = rivalsAutoload
+            getgenv().silentload = rivalsSilentload
+            getgenv().SCRIPT_KEY = ""
+            loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/8be52e21a0145a401c446ca7ab2b5df9bd327ea80b0cf1d2fe99e442edd0f9c9/download"))()
+        end
+
+    elseif selectedGame == "Planks" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua"))()
+
+    elseif selectedGame == "OneTap" then
+        getgenv().SCRIPT_KEY = ""
+        loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/2548ffbebdf21063cd4083f93a27ac276d44d1cb6503093d9c3290c3dfd954e3/download"))()
+
+    elseif selectedGame == "Arsenal" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Arsenal%20Beta.lua"))()
+    end
 end)
-
-toggleButton.MouseButton1Click:Connect(function()
-	autoloadEnabled = not autoloadEnabled
-	updateToggleAppearance()
-end)
-
-silentloadButton.MouseButton1Click:Connect(function()
-	silentloadEnabled = not silentloadEnabled
-	updateToggleAppearance()
-end)
-
-versionButton.MouseButton1Click:Connect(function()
-	version = if version == "Old" then "New" else "Old"
-	updateToggleAppearance()
-end)
-
-loadbtn.MouseButton1Click:Connect(function()
-	if selectedOption then
-		if selectedOption == "Arsenal" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Arsenal%20Beta.lua"))()
-		elseif selectedOption == "Planks" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua"))()
-		elseif selectedOption == "OneTap" then
-			getgenv().SCRIPT_KEY = ""
-			loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/2548ffbebdf21063cd4083f93a27ac276d44d1cb6503093d9c3290c3dfd954e3/download"))()
-		elseif selectedOption == "Rivals" then
-			repeat task.wait() until game:IsLoaded()
-			repeat task.wait() until game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character
-			repeat task.wait() until not game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("LoadingScreen")
-			getgenv().autoload = autoloadEnabled
-			getgenv().silentload = silentloadEnabled
-			getgenv().SCRIPT_KEY = ""
-			loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/8be52e21a0145a401c446ca7ab2b5df9bd327ea80b0cf1d2fe99e442edd0f9c9/download"))()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Test.lua"))()
-		elseif selectedOption == "Counterblox" then
-			if version == "New" then
-				game:GetService("Players").LocalPlayer:Kick("This script is detected and will get u banned")
-			else
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
-			end
-		elseif selectedOption == "Gunfight Arena" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Gunfight%20Arena.lua"))()
-		elseif selectedOption == "Universal" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Universal.lua"))()
-		end
-	else
-		textLabel6.Text = "Please select a script!"
-		wait(2)
-		textLabel6.Text = "{Selected Script}"
-	end
-end)
-
-closeButton.MouseButton1Click:Connect(function()
-	z3USLoader:Destroy()
-end)
-
-updateToggleAppearance()
