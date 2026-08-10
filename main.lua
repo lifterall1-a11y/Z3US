@@ -1,778 +1,879 @@
-local L_1_ = {};
-L_1_["1"] = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui") or gethui() ));
-L_1_["1"]["Name"] = [[Z3US Loader]];
-L_1_["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
-
-L_1_["2"] = Instance.new("Frame", L_1_["1"]);
-L_1_["2"]["Active"] = true;
-L_1_["2"]["BorderSizePixel"] = 0;
-L_1_["2"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["2"]["Size"] = UDim2.new(0, 924, 0, 599);
-L_1_["2"]["Position"] = UDim2.new(0.06837, 0, 0.06367, 0);
-L_1_["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-
-L_1_["3"] = Instance.new("UICorner", L_1_["2"]);
-L_1_["3"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["4"] = Instance.new("TextButton", L_1_["2"]);
-L_1_["4"]["TextWrapped"] = true;
-L_1_["4"]["BorderSizePixel"] = 0;
-L_1_["4"]["TextSize"] = 14;
-L_1_["4"]["TextScaled"] = true;
-L_1_["4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["4"]["BackgroundColor3"] = Color3.fromRGB(28, 30, 38);
-L_1_["4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["4"]["Size"] = UDim2.new(0, 340, 0, 47);
-L_1_["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["4"]["Text"] = [[Load]];
-L_1_["4"]["Name"] = [[Loadbtn]];
-L_1_["4"]["Position"] = UDim2.new(0.54772, 0, 0.7887, 0);
-
-L_1_["5"] = Instance.new("UICorner", L_1_["4"]);
-L_1_["5"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["6"] = Instance.new("TextButton", L_1_["2"]);
-L_1_["6"]["TextWrapped"] = true;
-L_1_["6"]["BorderSizePixel"] = 0;
-L_1_["6"]["TextSize"] = 14;
-L_1_["6"]["TextScaled"] = true;
-L_1_["6"]["TextColor3"] = Color3.fromRGB(59, 68, 99);
-L_1_["6"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["6"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["6"]["BackgroundTransparency"] = 1;
-L_1_["6"]["Size"] = UDim2.new(0, 35, 0, 41);
-L_1_["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["6"]["Text"] = [[X]];
-L_1_["6"]["Position"] = UDim2.new(0.95953, 0, 0, 0);
-
-L_1_["7"] = Instance.new("UIStroke", L_1_["6"]);
-L_1_["7"]["Enabled"] = false;
-L_1_["7"]["Thickness"] = 1.2;
-L_1_["7"]["Color"] = Color3.fromRGB(255, 255, 255);
-
-L_1_["8"] = Instance.new("TextLabel", L_1_["2"]);
-L_1_["8"]["BorderSizePixel"] = 0;
-L_1_["8"]["TextSize"] = 34;
-L_1_["8"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["8"]["TextColor3"] = Color3.fromRGB(41, 59, 86);
-L_1_["8"]["Size"] = UDim2.new(0, 200, 0, 50);
-L_1_["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["8"]["Text"] = [[Thank you for using Z3US <3]];
-L_1_["8"]["Position"] = UDim2.new(0.62131, 0, 0.87512, 0);
-
-L_1_["9"] = Instance.new("TextLabel", L_1_["2"]);
-L_1_["9"]["BorderSizePixel"] = 0;
-L_1_["9"]["TextSize"] = 34;
-L_1_["9"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["9"]["Size"] = UDim2.new(0, 200, 0, 50);
-L_1_["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["9"]["Text"] = [[{Selected Script}]];
-L_1_["9"]["Position"] = UDim2.new(0.62259, 0, 0.45803, 0);
-
-L_1_["a"] = Instance.new("ImageLabel", L_1_["2"]);
-L_1_["a"]["BorderSizePixel"] = 0;
-L_1_["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["a"]["Image"] = [[rbxassetid://92661965333918]];
-L_1_["a"]["Size"] = UDim2.new(0, 179, 0, 164);
-L_1_["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["a"]["BackgroundTransparency"] = 1;
-L_1_["a"]["Position"] = UDim2.new(0.63341, 0, 0.04289, 0);
-
-L_1_["b"] = Instance.new("Frame", L_1_["2"]);
-L_1_["b"]["BorderSizePixel"] = 0;
-L_1_["b"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["b"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["b"]["Position"] = UDim2.new(0.03421, 0, 0.03205, 0);
-L_1_["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["b"]["Name"] = [[Arsenal]];
-L_1_["b"]["BackgroundTransparency"] = 0.9;
-
-L_1_["c"] = Instance.new("UIStroke", L_1_["b"]);
-L_1_["c"]["Thickness"] = 1.9;
-L_1_["c"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["d"] = Instance.new("UICorner", L_1_["b"]);
-L_1_["d"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["e"] = Instance.new("TextLabel", L_1_["b"]);
-L_1_["e"]["TextWrapped"] = true;
-L_1_["e"]["BorderSizePixel"] = 0;
-L_1_["e"]["TextSize"] = 62;
-L_1_["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["e"]["BackgroundTransparency"] = 1;
-L_1_["e"]["Size"] = UDim2.new(0, 215, 0, 42);
-L_1_["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["e"]["Text"] = [[Arsenal]];
-L_1_["e"]["Position"] = UDim2.new(0.19023, 0, 0.12793, 0);
-
-L_1_["f"] = Instance.new("Frame", L_1_["2"]);
-L_1_["f"]["BorderSizePixel"] = 0;
-L_1_["f"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["f"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["f"]["Position"] = UDim2.new(0.03197, 0, 0.15223, 0);
-L_1_["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["f"]["Name"] = [[Counterblox]];
-L_1_["f"]["BackgroundTransparency"] = 0.9;
-
-L_1_["10"] = Instance.new("UIStroke", L_1_["f"]);
-L_1_["10"]["Thickness"] = 1.9;
-L_1_["10"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["10"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["11"] = Instance.new("UICorner", L_1_["f"]);
-L_1_["11"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["12"] = Instance.new("TextLabel", L_1_["f"]);
-L_1_["12"]["TextWrapped"] = true;
-L_1_["12"]["BorderSizePixel"] = 0;
-L_1_["12"]["TextSize"] = 62;
-L_1_["12"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["12"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["12"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["12"]["BackgroundTransparency"] = 1;
-L_1_["12"]["Size"] = UDim2.new(0, 257, 0, 42);
-L_1_["12"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["12"]["Text"] = [[Counterblox]];
-L_1_["12"]["Position"] = UDim2.new(0.12989, 0, 0.12793, 0);
-
-L_1_["13"] = Instance.new("Frame", L_1_["f"]);
-L_1_["13"]["Visible"] = false;
-L_1_["13"]["BorderSizePixel"] = 0;
-L_1_["13"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["13"]["Size"] = UDim2.new(0, 328, 0, 62);
-L_1_["13"]["Position"] = UDim2.new(1.38045, 0, 5.37208, 0);
-L_1_["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["13"]["Name"] = [[Options]];
-L_1_["13"]["BackgroundTransparency"] = 0.9;
-
-L_1_["14"] = Instance.new("UIStroke", L_1_["13"]);
-L_1_["14"]["Thickness"] = 1.9;
-L_1_["14"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["14"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["15"] = Instance.new("UICorner", L_1_["13"]);
-L_1_["15"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["16"] = Instance.new("Frame", L_1_["13"]);
-L_1_["16"]["BorderSizePixel"] = 0;
-L_1_["16"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["16"]["Size"] = UDim2.new(0, 303, 0, 47);
-L_1_["16"]["Position"] = UDim2.new(0.03506, 0, 0.12181, 0);
-L_1_["16"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["16"]["Name"] = [[Option1 (autoload)]];
-L_1_["16"]["BackgroundTransparency"] = 0.9;
-
-L_1_["17"] = Instance.new("UIStroke", L_1_["16"]);
-L_1_["17"]["Thickness"] = 1.9;
-L_1_["17"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["17"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["18"] = Instance.new("UICorner", L_1_["16"]);
-L_1_["18"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["19"] = Instance.new("TextLabel", L_1_["16"]);
-L_1_["19"]["TextWrapped"] = true;
-L_1_["19"]["BorderSizePixel"] = 0;
-L_1_["19"]["TextSize"] = 22;
-L_1_["19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["19"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["19"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["19"]["BackgroundTransparency"] = 1;
-L_1_["19"]["Size"] = UDim2.new(0, 82, 0, 21);
-L_1_["19"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["19"]["Text"] = [[Version]];
-L_1_["19"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
-
-L_1_["1a"] = Instance.new("TextButton", L_1_["16"]);
-L_1_["1a"]["TextWrapped"] = true;
-L_1_["1a"]["BorderSizePixel"] = 0;
-L_1_["1a"]["TextSize"] = 18;
-L_1_["1a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["1a"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
-L_1_["1a"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["1a"]["Size"] = UDim2.new(0, 90, 0, 29);
-L_1_["1a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["1a"]["Text"] = [[Old]];
-L_1_["1a"]["Name"] = [[Onoff]];
-L_1_["1a"]["Position"] = UDim2.new(0.65839, 0, 0.17975, 0);
-
-L_1_["1b"] = Instance.new("UICorner", L_1_["1a"]);
-L_1_["1b"]["CornerRadius"] = UDim.new(0, 7);
-
-L_1_["1c"] = Instance.new("Frame", L_1_["2"]);
-L_1_["1c"]["BorderSizePixel"] = 0;
-L_1_["1c"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["1c"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["1c"]["Position"] = UDim2.new(0.03197, 0, 0.26854, 0);
-L_1_["1c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["1c"]["Name"] = [[GunFight]];
-L_1_["1c"]["BackgroundTransparency"] = 0.9;
-
-L_1_["1d"] = Instance.new("UIStroke", L_1_["1c"]);
-L_1_["1d"]["Thickness"] = 1.9;
-L_1_["1d"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["1d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["1e"] = Instance.new("UICorner", L_1_["1c"]);
-L_1_["1e"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["1f"] = Instance.new("TextLabel", L_1_["1c"]);
-L_1_["1f"]["TextWrapped"] = true;
-L_1_["1f"]["BorderSizePixel"] = 0;
-L_1_["1f"]["TextSize"] = 62;
-L_1_["1f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["1f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["1f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["1f"]["BackgroundTransparency"] = 1;
-L_1_["1f"]["Size"] = UDim2.new(0, 337, 0, 42);
-L_1_["1f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["1f"]["Text"] = [[Gunfight Arena]];
-L_1_["1f"]["Position"] = UDim2.new(0.01495, 0, 0.12793, 0);
-
-L_1_["20"] = Instance.new("Frame", L_1_["2"]);
-L_1_["20"]["BorderSizePixel"] = 0;
-L_1_["20"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["20"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["20"]["Position"] = UDim2.new(0.03056, 0, 0.38577, 0);
-L_1_["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["20"]["Name"] = [[Universal]];
-L_1_["20"]["BackgroundTransparency"] = 0.9;
-
-L_1_["21"] = Instance.new("UIStroke", L_1_["20"]);
-L_1_["21"]["Thickness"] = 1.9;
-L_1_["21"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["21"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["22"] = Instance.new("UICorner", L_1_["20"]);
-L_1_["22"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["23"] = Instance.new("TextLabel", L_1_["20"]);
-L_1_["23"]["TextWrapped"] = true;
-L_1_["23"]["BorderSizePixel"] = 0;
-L_1_["23"]["TextSize"] = 62;
-L_1_["23"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["23"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["23"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["23"]["BackgroundTransparency"] = 1;
-L_1_["23"]["Size"] = UDim2.new(0, 205, 0, 42);
-L_1_["23"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["23"]["Text"] = [[Universal]];
-L_1_["23"]["Position"] = UDim2.new(0.20747, 0, 0.12793, 0);
-
-L_1_["24"] = Instance.new("Frame", L_1_["2"]);
-L_1_["24"]["BorderSizePixel"] = 0;
-L_1_["24"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["24"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["24"]["Position"] = UDim2.new(0.03275, 0, 0.50963, 0);
-L_1_["24"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["24"]["Name"] = [[Rivals]];
-L_1_["24"]["BackgroundTransparency"] = 0.9;
-
-L_1_["25"] = Instance.new("UIStroke", L_1_["24"]);
-L_1_["25"]["Thickness"] = 1.9;
-L_1_["25"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["25"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["26"] = Instance.new("UICorner", L_1_["24"]);
-L_1_["26"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["27"] = Instance.new("Frame", L_1_["24"]);
-L_1_["27"]["Visible"] = false;
-L_1_["27"]["BorderSizePixel"] = 0;
-L_1_["27"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["27"]["Size"] = UDim2.new(0, 328, 0, 62);
-L_1_["27"]["Position"] = UDim2.new(1.38333, 0, 1.69967, 0);
-L_1_["27"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["27"]["Name"] = [[Options]];
-L_1_["27"]["BackgroundTransparency"] = 0.9;
-
-L_1_["28"] = Instance.new("UIStroke", L_1_["27"]);
-L_1_["28"]["Thickness"] = 1.9;
-L_1_["28"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["28"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["29"] = Instance.new("UICorner", L_1_["27"]);
-L_1_["29"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["2a"] = Instance.new("Frame", L_1_["27"]);
-L_1_["2a"]["BorderSizePixel"] = 0;
-L_1_["2a"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["2a"]["Size"] = UDim2.new(0, 148, 0, 47);
-L_1_["2a"]["Position"] = UDim2.new(0.03506, 0, 0.12181, 0);
-L_1_["2a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["2a"]["Name"] = [[Option1 (autoload)]];
-L_1_["2a"]["BackgroundTransparency"] = 0.9;
-
-L_1_["2b"] = Instance.new("UIStroke", L_1_["2a"]);
-L_1_["2b"]["Thickness"] = 1.9;
-L_1_["2b"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["2b"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["2c"] = Instance.new("UICorner", L_1_["2a"]);
-L_1_["2c"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["2d"] = Instance.new("TextLabel", L_1_["2a"]);
-L_1_["2d"]["TextWrapped"] = true;
-L_1_["2d"]["BorderSizePixel"] = 0;
-L_1_["2d"]["TextSize"] = 22;
-L_1_["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["2d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["2d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["2d"]["BackgroundTransparency"] = 1;
-L_1_["2d"]["Size"] = UDim2.new(0, 82, 0, 21);
-L_1_["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["2d"]["Text"] = [[Autoload]];
-L_1_["2d"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
-
-L_1_["2e"] = Instance.new("TextButton", L_1_["2a"]);
-L_1_["2e"]["TextWrapped"] = true;
-L_1_["2e"]["BorderSizePixel"] = 0;
-L_1_["2e"]["TextSize"] = 18;
-L_1_["2e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["2e"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
-L_1_["2e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["2e"]["Size"] = UDim2.new(0, 46, 0, 29);
-L_1_["2e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["2e"]["Text"] = [[On]];
-L_1_["2e"]["Name"] = [[Onoff]];
-L_1_["2e"]["Position"] = UDim2.new(0.64189, 0, 0.17975, 0);
-
-L_1_["2f"] = Instance.new("UICorner", L_1_["2e"]);
-L_1_["2f"]["CornerRadius"] = UDim.new(0, 7);
-
-L_1_["30"] = Instance.new("Frame", L_1_["27"]);
-L_1_["30"]["BorderSizePixel"] = 0;
-L_1_["30"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["30"]["Size"] = UDim2.new(0, 148, 0, 47);
-L_1_["30"]["Position"] = UDim2.new(0.51067, 0, 0.12181, 0);
-L_1_["30"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["30"]["Name"] = [[Option2 (silentload)]];
-L_1_["30"]["BackgroundTransparency"] = 0.9;
-
-L_1_["31"] = Instance.new("UIStroke", L_1_["30"]);
-L_1_["31"]["Thickness"] = 1.9;
-L_1_["31"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["31"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["32"] = Instance.new("UICorner", L_1_["30"]);
-L_1_["32"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["33"] = Instance.new("TextButton", L_1_["30"]);
-L_1_["33"]["TextWrapped"] = true;
-L_1_["33"]["BorderSizePixel"] = 0;
-L_1_["33"]["TextSize"] = 18;
-L_1_["33"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["33"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
-L_1_["33"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["33"]["Size"] = UDim2.new(0, 46, 0, 29);
-L_1_["33"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["33"]["Text"] = [[On]];
-L_1_["33"]["Name"] = [[Onoff]];
-L_1_["33"]["Position"] = UDim2.new(0.64865, 0, 0.17975, 0);
-
-L_1_["34"] = Instance.new("UICorner", L_1_["33"]);
-L_1_["34"]["CornerRadius"] = UDim.new(0, 7);
-
-L_1_["35"] = Instance.new("TextLabel", L_1_["30"]);
-L_1_["35"]["TextWrapped"] = true;
-L_1_["35"]["BorderSizePixel"] = 0;
-L_1_["35"]["TextSize"] = 22;
-L_1_["35"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["35"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["35"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["35"]["BackgroundTransparency"] = 1;
-L_1_["35"]["Size"] = UDim2.new(0, 82, 0, 21);
-L_1_["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["35"]["Text"] = [[Silentload]];
-L_1_["35"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
-
-L_1_["36"] = Instance.new("Frame", L_1_["27"]);
-L_1_["36"]["BorderSizePixel"] = 0;
-L_1_["36"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["36"]["Size"] = UDim2.new(0, 167, 0, 62);
-L_1_["36"]["Position"] = UDim2.new(0.23446, 0, -1.099, 0);
-L_1_["36"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["36"]["Name"] = [[Version]];
-L_1_["36"]["BackgroundTransparency"] = 0.9;
-
-L_1_["37"] = Instance.new("UIStroke", L_1_["36"]);
-L_1_["37"]["Thickness"] = 1.9;
-L_1_["37"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["37"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["38"] = Instance.new("UICorner", L_1_["36"]);
-L_1_["38"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["39"] = Instance.new("Frame", L_1_["36"]);
-L_1_["39"]["BorderSizePixel"] = 0;
-L_1_["39"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["39"]["Size"] = UDim2.new(0, 148, 0, 47);
-L_1_["39"]["Position"] = UDim2.new(0.05902, 0, 0.10568, 0);
-L_1_["39"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["39"]["Name"] = [[Option1 (autoload)]];
-L_1_["39"]["BackgroundTransparency"] = 0.9;
-
-L_1_["3a"] = Instance.new("UIStroke", L_1_["39"]);
-L_1_["3a"]["Thickness"] = 1.9;
-L_1_["3a"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["3a"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["3b"] = Instance.new("UICorner", L_1_["39"]);
-L_1_["3b"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["3c"] = Instance.new("TextLabel", L_1_["39"]);
-L_1_["3c"]["TextWrapped"] = true;
-L_1_["3c"]["BorderSizePixel"] = 0;
-L_1_["3c"]["TextSize"] = 22;
-L_1_["3c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["3c"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["3c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["3c"]["BackgroundTransparency"] = 1;
-L_1_["3c"]["Size"] = UDim2.new(0, 82, 0, 21);
-L_1_["3c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["3c"]["Text"] = [[Version]];
-L_1_["3c"]["Position"] = UDim2.new(0.04054, 0, 0.26485, 0);
-
-L_1_["3d"] = Instance.new("TextButton", L_1_["39"]);
-L_1_["3d"]["TextWrapped"] = true;
-L_1_["3d"]["BorderSizePixel"] = 0;
-L_1_["3d"]["TextSize"] = 18;
-L_1_["3d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["3d"]["BackgroundColor3"] = Color3.fromRGB(141, 156, 209);
-L_1_["3d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["3d"]["Size"] = UDim2.new(0, 46, 0, 29);
-L_1_["3d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["3d"]["Text"] = [[V2]];
-L_1_["3d"]["Name"] = [[Onoff]];
-L_1_["3d"]["Position"] = UDim2.new(0.64189, 0, 0.17975, 0);
-
-L_1_["3e"] = Instance.new("UICorner", L_1_["3d"]);
-L_1_["3e"]["CornerRadius"] = UDim.new(0, 7);
-
-L_1_["3f"] = Instance.new("TextLabel", L_1_["24"]);
-L_1_["3f"]["TextWrapped"] = true;
-L_1_["3f"]["BorderSizePixel"] = 0;
-L_1_["3f"]["TextSize"] = 62;
-L_1_["3f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["3f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["3f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["3f"]["BackgroundTransparency"] = 1;
-L_1_["3f"]["Size"] = UDim2.new(0, 205, 0, 42);
-L_1_["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["3f"]["Text"] = [[Rivals]];
-L_1_["3f"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
-
-L_1_["40"] = Instance.new("Frame", L_1_["2"]);
-L_1_["40"]["BorderSizePixel"] = 0;
-L_1_["40"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["40"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["40"]["Position"] = UDim2.new(0.03275, 0, 0.62843, 0);
-L_1_["40"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["40"]["Name"] = [[Overkill]];
-L_1_["40"]["BackgroundTransparency"] = 0.9;
-
-L_1_["41"] = Instance.new("UIStroke", L_1_["40"]);
-L_1_["41"]["Thickness"] = 1.9;
-L_1_["41"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["41"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["42"] = Instance.new("UICorner", L_1_["40"]);
-L_1_["42"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["43"] = Instance.new("TextLabel", L_1_["40"]);
-L_1_["43"]["TextWrapped"] = true;
-L_1_["43"]["BorderSizePixel"] = 0;
-L_1_["43"]["TextSize"] = 62;
-L_1_["43"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["43"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["43"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["43"]["BackgroundTransparency"] = 1;
-L_1_["43"]["Size"] = UDim2.new(0, 205, 0, 42);
-L_1_["43"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["43"]["Text"] = [[Overkill]];
-L_1_["43"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
-
-L_1_["44"] = Instance.new("Frame", L_1_["40"]);
-L_1_["44"]["Visible"] = false;
-L_1_["44"]["BorderSizePixel"] = 0;
-L_1_["44"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["44"]["Size"] = UDim2.new(0, 328, 0, 51);
-L_1_["44"]["Position"] = UDim2.new(1.38333, 0, 0.57898, 0);
-L_1_["44"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["44"]["Name"] = [[Key]];
-L_1_["44"]["BackgroundTransparency"] = 0.9;
-
-L_1_["45"] = Instance.new("UIStroke", L_1_["44"]);
-L_1_["45"]["Thickness"] = 1.9;
-L_1_["45"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["45"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["46"] = Instance.new("UICorner", L_1_["44"]);
-L_1_["46"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["47"] = Instance.new("TextBox", L_1_["44"]);
-L_1_["47"]["CursorPosition"] = -1;
-L_1_["47"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-L_1_["47"]["BorderSizePixel"] = 0;
-L_1_["47"]["TextWrapped"] = true;
-L_1_["47"]["TextSize"] = 14;
-L_1_["47"]["TextColor3"] = Color3.fromRGB(255, 255, 255);  -- Changed to white
-L_1_["47"]["TextScaled"] = true;
-L_1_["47"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["47"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["47"]["PlaceholderText"] = [[Key]];
-L_1_["47"]["Size"] = UDim2.new(0, 302, 0, 47);
-L_1_["47"]["Position"] = UDim2.new(0.05183, 0, 0.1129, 0);
-L_1_["47"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["47"]["Text"] = [[]];
-L_1_["47"]["BackgroundTransparency"] = 1;
-
-L_1_["48"] = Instance.new("Frame", L_1_["2"]);
-L_1_["48"]["BorderSizePixel"] = 0;
-L_1_["48"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["48"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["48"]["Position"] = UDim2.new(0.0317, 0, 0.74686, 0);
-L_1_["48"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["48"]["Name"] = [[Planks]];
-L_1_["48"]["BackgroundTransparency"] = 0.9;
-
-L_1_["49"] = Instance.new("UIStroke", L_1_["48"]);
-L_1_["49"]["Thickness"] = 1.9;
-L_1_["49"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["49"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["4a"] = Instance.new("UICorner", L_1_["48"]);
-L_1_["4a"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["4b"] = Instance.new("TextLabel", L_1_["48"]);
-L_1_["4b"]["TextWrapped"] = true;
-L_1_["4b"]["BorderSizePixel"] = 0;
-L_1_["4b"]["TextSize"] = 62;
-L_1_["4b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["4b"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["4b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["4b"]["BackgroundTransparency"] = 1;
-L_1_["4b"]["Size"] = UDim2.new(0, 205, 0, 42);
-L_1_["4b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["4b"]["Text"] = [[Planks]];
-L_1_["4b"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
-
-L_1_["4c"] = Instance.new("Frame", L_1_["2"]);
-L_1_["4c"]["BorderSizePixel"] = 0;
-L_1_["4c"]["BackgroundColor3"] = Color3.fromRGB(18, 19, 21);
-L_1_["4c"]["Size"] = UDim2.new(0, 348, 0, 58);
-L_1_["4c"]["Position"] = UDim2.new(0.0317, 0, 0.86864, 0);
-L_1_["4c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["4c"]["Name"] = [[OneTap]];
-L_1_["4c"]["BackgroundTransparency"] = 0.9;
-
-L_1_["4d"] = Instance.new("UIStroke", L_1_["4c"]);
-L_1_["4d"]["Thickness"] = 1.9;
-L_1_["4d"]["Color"] = Color3.fromRGB(27, 30, 38);
-L_1_["4d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-L_1_["4e"] = Instance.new("UICorner", L_1_["4c"]);
-L_1_["4e"]["CornerRadius"] = UDim.new(0, 25);
-
-L_1_["4f"] = Instance.new("TextLabel", L_1_["4c"]);
-L_1_["4f"]["TextWrapped"] = true;
-L_1_["4f"]["BorderSizePixel"] = 0;
-L_1_["4f"]["TextSize"] = 62;
-L_1_["4f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["4f"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-L_1_["4f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-L_1_["4f"]["BackgroundTransparency"] = 1;
-L_1_["4f"]["Size"] = UDim2.new(0, 205, 0, 42);
-L_1_["4f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-L_1_["4f"]["Text"] = [[One Tap]];
-L_1_["4f"]["Position"] = UDim2.new(0.21035, 0, 0.12793, 0);
-
-local userinpt = cloneref(game:GetService("UserInputService"))
-local mainGui = L_1_["1"]
-local mainFrame = L_1_["2"]
-local loadBtn = L_1_["4"]
-local closeBtn = L_1_["6"]
-local selectedScriptLabel = L_1_["9"]
-local counterbloxVersionBtn = L_1_["1a"]
-local rivalsAutoloadBtn = L_1_["2e"]
-local rivalsSilentloadBtn = L_1_["33"]
-local rivalsVersionBtn = L_1_["3d"]
-local counterbloxOptionsFrame = L_1_["13"]
-local rivalsOptionsFrame = L_1_["27"]
-local overkillKeyFrame = L_1_["44"]
-local overkillKeyBox = L_1_["47"]
-
-local selectedGame,selectedStroke,counterbloxVersion,rivalsAutoload, rivalsSilentload, rivalsVersion, overkillKey = "", nil, "Old", true, false, "V2", ""
-function kys()
-    pcall(function()
-        makefolder("Z3US/Overkill")
-    end)
-    local success, key = pcall(function()
-        return readfile("Z3US/Overkill/key.json")
-    end)
-    if success and key and key ~= "" then
-        overkillKey = key
-        overkillKeyBox.Text = key
-    end
-end
-kys()
-
-local gameFrames = {
-    ["Arsenal"] = L_1_["b"],
-    ["Counterblox"] = L_1_["f"],
-    ["GunFight"] = L_1_["1c"],
-    ["Universal"] = L_1_["20"],
-    ["Rivals"] = L_1_["24"],
-    ["Overkill"] = L_1_["40"],
-    ["Planks"] = L_1_["48"],
-    ["OneTap"] = L_1_["4c"]
+--[[
+    Z3US Loader v2.2 - Optimized Loading
+    - Faster V2 loading
+    - Pre-loading system
+    - Caching support
+]]
+
+-- ============================================================================
+-- CONFIGURATION
+-- ============================================================================
+
+local CONFIG = {
+    GUI_NAME = "Z3US Loader v2",
+    STORAGE_PATH = "Z3US",
+    ANIMATION_DURATION = 0.2,
+    LOAD_TIMEOUT = 10,
+    DEFAULT_SETTINGS = {
+        counterbloxVersion = "Old",
+        rivalsAutoload = true,
+        rivalsSilentload = false,
+        rivalsVersion = "V2",
+        overkillKey = "",
+    }
 }
 
-for gameName, frame in gameFrames do
-    local textLabel = frame:FindFirstChildWhichIsA("TextLabel")
-    if textLabel then
-        textLabel.InputBegan:Connect(function(input)
+-- ============================================================================
+-- CORE SERVICES
+-- ============================================================================
+
+local Services = {
+    Players = cloneref(game:GetService("Players")),
+    CoreGui = cloneref(game:GetService("CoreGui") or gethui()),
+    UserInput = cloneref(game:GetService("UserInputService")),
+    RunService = cloneref(game:GetService("RunService")),
+    TweenService = cloneref(game:GetService("TweenService")),
+    HttpService = cloneref(game:GetService("HttpService")),
+}
+
+local LocalPlayer = Services.Players.LocalPlayer
+
+-- ============================================================================
+-- UTILITY MODULE
+-- ============================================================================
+
+local Utility = {
+    saveData = function(path, data)
+        local success, err = pcall(function()
+            makefolder(CONFIG.STORAGE_PATH)
+            writefile(path, Services.HttpService:JSONEncode(data))
+        end)
+        if not success then warn("[Z3US] Failed to save:", err) end
+        return success
+    end,
+    
+    loadData = function(path, default)
+        local success, data = pcall(function()
+            if isfile(path) then
+                return Services.HttpService:JSONDecode(readfile(path))
+            end
+            return nil
+        end)
+        return success and data or default
+    end,
+    
+    animate = function(object, properties, duration)
+        duration = duration or CONFIG.ANIMATION_DURATION
+        local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local tween = Services.TweenService:Create(object, tweenInfo, properties)
+        tween:Play()
+        return tween
+    end,
+    
+    -- FAST HTTP with caching
+    cachedHttpGet = function(url, forceRefresh)
+        local cachePath = CONFIG.STORAGE_PATH .. "/cache/" .. Services.HttpService:GenerateGUID(false) .. ".json"
+        makefolder(CONFIG.STORAGE_PATH .. "/cache")
+        
+        -- Check cache first (valid for 5 minutes)
+        if not forceRefresh then
+            local success, data = pcall(function()
+                if isfile(cachePath) then
+                    return Services.HttpService:JSONDecode(readfile(cachePath))
+                end
+                return nil
+            end)
+            if success and data and data.timestamp and tick() - data.timestamp < 300 then
+                return data.content
+            end
+        end
+        
+        -- Fetch fresh
+        local success, result = pcall(function()
+            return game:HttpGet(url)
+        end)
+        
+        if success and result and #result > 0 then
+            -- Cache it
+            pcall(function()
+                writefile(cachePath, Services.HttpService:JSONEncode({
+                    content = result,
+                    timestamp = tick()
+                }))
+            end)
+            return result
+        end
+        return nil
+    end,
+    
+    secureHttpGet = function(url, retries)
+        retries = retries or 2
+        for i = 1, retries do
+            local success, result = pcall(function()
+                return game:HttpGet(url)
+            end)
+            if success and result and #result > 0 then
+                return result
+            end
+            task.wait(0.2)
+        end
+        return nil
+    end
+}
+
+-- ============================================================================
+-- GAME CONFIGURATION SYSTEM
+-- ============================================================================
+
+local GameConfigs = {
+    Arsenal = {
+        displayName = "Arsenal",
+        scriptUrl = "https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Arsenal%20Beta.lua",
+        options = {},
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            loadstring(self:getScript())()
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    },
+    
+    Counterblox = {
+        displayName = "Counterblox",
+        scriptUrl = "https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua",
+        options = {
+            version = { type = "toggle", values = {"Old", "New"}, default = "Old" }
+        },
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            if config.version == "New" then
+                local player = Services.Players.LocalPlayer
+                if player then
+                    player:Kick("This script is detected and will get you banned")
+                end
+            else
+                loadstring(self:getScript())()
+            end
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    },
+    
+    GunFight = {
+        displayName = "Gunfight Arena",
+        scriptUrl = "https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Gunfight%20Arena.lua",
+        options = {},
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            loadstring(self:getScript())()
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    },
+    
+    Universal = {
+        displayName = "Universal",
+        scriptUrl = "https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Universal.lua",
+        options = {},
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            loadstring(self:getScript())()
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    },
+    
+    Rivals = {
+        displayName = "Rivals",
+        scriptUrl = "https://api.jnkie.com/api/v1/luascripts/public/2438cfd42af811d55492e854318eeda24a73aa5d0b11a403ec1f7542abd8f2f0/download",
+        options = {
+            autoload = { type = "toggle", values = {true, false}, default = true },
+            silentload = { type = "toggle", values = {true, false}, default = false },
+            version = { type = "toggle", values = {"V2", "V1"}, default = "V2" }
+        },
+        isHeavy = true,
+        preload = true,
+        cachedScript = nil,
+        executor = function(self, config)
+            if config.version == "V2" then
+                getgenv().autoload = config.autoload
+                getgenv().silentload = config.silentload
+                getgenv().SCRIPT_KEY = ""
+                
+                task.spawn(function()
+                    local script = self:getScript()
+                    if script and #script > 0 then
+                        loadstring(script)()
+                    end
+                end)
+            else
+                task.spawn(function()
+                    repeat task.wait() until game:IsLoaded()
+                    repeat task.wait() until LocalPlayer and LocalPlayer.Character
+                    repeat task.wait() until not LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("LoadingScreen")
+                    
+                    getgenv().autoload = config.autoload
+                    getgenv().silentload = config.silentload
+                    getgenv().SCRIPT_KEY = ""
+                    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/8be52e21a0145a401c446ca7ab2b5df9bd327ea80b0cf1d2fe99e442edd0f9c9/download"))()
+                end)
+            end
+        end,
+        getScript = function(self)
+            if self.cachedScript then
+                return self.cachedScript
+            end
+            
+            local script = Utility.secureHttpGet(self.scriptUrl)
+            if script and #script > 0 then
+                self.cachedScript = script
+                return script
+            end
+            return ""
+        end,
+        preloadScript = function(self)
+            task.spawn(function()
+                if not self.cachedScript then
+                    local script = Utility.secureHttpGet(self.scriptUrl)
+                    if script and #script > 0 then
+                        self.cachedScript = script
+                    end
+                end
+            end)
+        end
+    },
+    
+    Overkill = {
+        displayName = "Overkill",
+        scriptUrl = "https://api.jnkie.com/api/v1/luascripts/public/d603ee0150fbdeb809a036562925966619d3e145a77b4d07b222b0612022ab8f/download",
+        options = {
+            key = { type = "string", default = "" }
+        },
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            loadstring(self:getScript())()
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    },
+    
+    Planks = {
+        displayName = "Planks",
+        scriptUrl = "https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua",
+        options = {},
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            loadstring(self:getScript())()
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    },
+    
+    OneTap = {
+        displayName = "One Tap",
+        scriptUrl = "https://api.jnkie.com/api/v1/luascripts/public/2548ffbebdf21063cd4083f93a27ac276d44d1cb6503093d9c3290c3dfd954e3/download",
+        options = {},
+        isHeavy = false,
+        preload = false,
+        executor = function(self, config)
+            getgenv().SCRIPT_KEY = ""
+            loadstring(self:getScript())()
+        end,
+        getScript = function(self)
+            return Utility.secureHttpGet(self.scriptUrl) or ""
+        end
+    }
+}
+
+-- ============================================================================
+-- STATE MANAGEMENT
+-- ============================================================================
+
+local State = {
+    selectedGame = nil,
+    configs = {},
+    isLoaded = false,
+    isLoading = false,
+}
+
+local function loadState()
+    local saved = Utility.loadData(CONFIG.STORAGE_PATH .. "/config.json", {})
+    
+    for gameName, config in pairs(GameConfigs) do
+        State.configs[gameName] = {}
+        for optionName, optionDef in pairs(config.options) do
+            local savedValue = saved[gameName] and saved[gameName][optionName]
+            State.configs[gameName][optionName] = savedValue ~= nil and savedValue or optionDef.default
+        end
+    end
+    
+    State.selectedGame = saved.selectedGame or nil
+end
+
+local function saveState()
+    local data = { selectedGame = State.selectedGame }
+    for gameName, config in pairs(State.configs) do
+        data[gameName] = {}
+        for optionName, value in pairs(config) do
+            data[gameName][optionName] = value
+        end
+    end
+    Utility.saveData(CONFIG.STORAGE_PATH .. "/config.json", data)
+end
+
+-- ============================================================================
+-- UI CONSTRUCTION
+-- ============================================================================
+
+local UI = {}
+
+function UI:createRoot()
+    local gui = Instance.new("ScreenGui")
+    gui.Name = CONFIG.GUI_NAME
+    gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    gui.Parent = Services.CoreGui
+    return gui
+end
+
+function UI:createMainFrame(parent)
+    local frame = Instance.new("Frame")
+    frame.Active = true
+    frame.BackgroundColor3 = Color3.fromRGB(18, 19, 21)
+    frame.BorderSizePixel = 0
+    frame.Position = UDim2.new(0.068, 0, 0.063, 0)
+    frame.Size = UDim2.new(0, 924, 0, 599)
+    frame.Parent = parent
+    
+    local shadow = Instance.new("Frame")
+    shadow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    shadow.BackgroundTransparency = 0.3
+    shadow.BorderSizePixel = 0
+    shadow.Position = UDim2.new(0.01, 0, 0.01, 0)
+    shadow.Size = UDim2.new(1, 0, 1, 0)
+    shadow.Parent = frame
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 25)
+    corner.Parent = frame
+    
+    local gradient = Instance.new("UIGradient")
+    gradient.Rotation = 45
+    gradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(18, 19, 21)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(25, 27, 30))
+    })
+    gradient.Parent = frame
+    
+    return frame
+end
+
+function UI:createDraggableTitle(parent, title)
+    local titleBar = Instance.new("Frame")
+    titleBar.BackgroundColor3 = Color3.fromRGB(18, 19, 21)
+    titleBar.BackgroundTransparency = 1
+    titleBar.BorderSizePixel = 0
+    titleBar.Size = UDim2.new(1, 0, 0, 40)
+    titleBar.Position = UDim2.new(0, 0, 0, 0)
+    titleBar.Parent = parent
+    
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    titleLabel.Position = UDim2.new(0.02, 0, 0, 0)
+    titleLabel.Size = UDim2.new(0.3, 0, 1, 0)
+    titleLabel.Text = "☰ " .. CONFIG.GUI_NAME
+    titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleLabel.TextSize = 20
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    titleLabel.Parent = titleBar
+    
+    return titleBar
+end
+
+function UI:createCloseButton(parent)
+    local btn = Instance.new("TextButton")
+    btn.BackgroundTransparency = 1
+    btn.Position = UDim2.new(0.96, 0, 0.01, 0)
+    btn.Size = UDim2.new(0, 35, 0, 35)
+    btn.Text = "✕"
+    btn.TextColor3 = Color3.fromRGB(150, 150, 150)
+    btn.TextSize = 20
+    btn.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    btn.Parent = parent
+    
+    btn.MouseEnter:Connect(function()
+        btn.TextColor3 = Color3.fromRGB(255, 70, 70)
+    end)
+    btn.MouseLeave:Connect(function()
+        btn.TextColor3 = Color3.fromRGB(150, 150, 150)
+    end)
+    
+    return btn
+end
+
+function UI:createLogo(parent)
+    local logo = Instance.new("ImageLabel")
+    logo.BackgroundTransparency = 1
+    logo.Image = "rbxassetid://92661965333918"
+    logo.Size = UDim2.new(0, 179, 0, 164)
+    logo.Position = UDim2.new(0.633, 0, 0.04, 0)
+    logo.Parent = parent
+    return logo
+end
+
+function UI:createGameList(parent)
+    local gamesContainer = Instance.new("ScrollingFrame")
+    gamesContainer.BackgroundColor3 = Color3.fromRGB(18, 19, 21)
+    gamesContainer.BackgroundTransparency = 1
+    gamesContainer.BorderSizePixel = 0
+    gamesContainer.Position = UDim2.new(0.02, 0, 0.08, 0)
+    gamesContainer.Size = UDim2.new(0.4, 0, 0.85, 0)
+    gamesContainer.ScrollBarThickness = 0
+    gamesContainer.CanvasSize = UDim2.new(0, 0, 0, #GameConfigs * 70)
+    gamesContainer.Parent = parent
+    
+    local canvas = Instance.new("UIListLayout")
+    canvas.Padding = UDim.new(0, 8)
+    canvas.SortOrder = Enum.SortOrder.LayoutOrder
+    canvas.Parent = gamesContainer
+    
+    return gamesContainer, canvas
+end
+
+function UI:createGameButton(parent, gameName, config)
+    local frame = Instance.new("Frame")
+    frame.BackgroundColor3 = Color3.fromRGB(18, 19, 21)
+    frame.BackgroundTransparency = 0.9
+    frame.BorderSizePixel = 0
+    frame.Size = UDim2.new(1, 0, 0, 58)
+    frame.Parent = parent
+    
+    local hover = Instance.new("UICorner")
+    hover.CornerRadius = UDim.new(0, 25)
+    hover.Parent = frame
+    
+    local stroke = Instance.new("UIStroke")
+    stroke.Thickness = 1.9
+    stroke.Color = Color3.fromRGB(27, 30, 38)
+    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    stroke.Parent = frame
+    
+    local label = Instance.new("TextLabel")
+    label.BackgroundTransparency = 1
+    label.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    label.Position = UDim2.new(0.1, 0, 0, 0)
+    label.Size = UDim2.new(0.8, 0, 1, 0)
+    label.Text = config.displayName
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.TextSize = 24
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.Parent = frame
+    
+    if config.isHeavy then
+        local warning = Instance.new("TextLabel")
+        warning.BackgroundTransparency = 1
+        warning.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        warning.Position = UDim2.new(0.7, 0, 0, 0)
+        warning.Size = UDim2.new(0.25, 0, 1, 0)
+        warning.Text = "⚡ FAST"
+        warning.TextColor3 = Color3.fromRGB(100, 255, 100)
+        warning.TextSize = 14
+        warning.TextXAlignment = Enum.TextXAlignment.Right
+        warning.Parent = frame
+    end
+    
+    if next(config.options) then
+        local indicator = Instance.new("TextLabel")
+        indicator.BackgroundTransparency = 1
+        indicator.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        indicator.Position = UDim2.new(0.85, 0, 0, 0)
+        indicator.Size = UDim2.new(0.15, 0, 1, 0)
+        indicator.Text = "⚙"
+        indicator.TextColor3 = Color3.fromRGB(100, 100, 100)
+        indicator.TextSize = 20
+        indicator.Parent = frame
+    end
+    
+    return frame, stroke, label
+end
+
+function UI:createOptionsPanel(parent, gameName, config)
+    local panel = Instance.new("Frame")
+    panel.BackgroundColor3 = Color3.fromRGB(18, 19, 21)
+    panel.BackgroundTransparency = 0.9
+    panel.BorderSizePixel = 0
+    panel.Size = UDim2.new(0.35, 0, 0.3, 0)
+    panel.Position = UDim2.new(1.4, 0, 0, 0)
+    panel.Visible = false
+    panel.Parent = parent
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 25)
+    corner.Parent = panel
+    
+    local stroke = Instance.new("UIStroke")
+    stroke.Thickness = 1.9
+    stroke.Color = Color3.fromRGB(27, 30, 38)
+    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    stroke.Parent = panel
+    
+    local layout = Instance.new("UIListLayout")
+    layout.Padding = UDim.new(0, 10)
+    layout.SortOrder = Enum.SortOrder.LayoutOrder
+    layout.Parent = panel
+    
+    return panel, layout
+end
+
+function UI:createOptionToggle(parent, optionName, value, callback)
+    local frame = Instance.new("Frame")
+    frame.BackgroundTransparency = 1
+    frame.Size = UDim2.new(1, 0, 0, 40)
+    frame.Parent = parent
+    
+    local label = Instance.new("TextLabel")
+    label.BackgroundTransparency = 1
+    label.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    label.Position = UDim2.new(0.05, 0, 0, 0)
+    label.Size = UDim2.new(0.5, 0, 1, 0)
+    label.Text = optionName:gsub("^%l", string.upper)
+    label.TextColor3 = Color3.fromRGB(200, 200, 200)
+    label.TextSize = 16
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.Parent = frame
+    
+    local button = Instance.new("TextButton")
+    button.BackgroundColor3 = value and Color3.fromRGB(80, 180, 80) or Color3.fromRGB(60, 60, 60)
+    button.Position = UDim2.new(0.7, 0, 0.1, 0)
+    button.Size = UDim2.new(0.25, 0, 0.8, 0)
+    button.Text = value and "ON" or "OFF"
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.TextSize = 14
+    button.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    button.Parent = frame
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 12)
+    corner.Parent = button
+    
+    button.MouseButton1Click:Connect(function()
+        local newValue = not value
+        value = newValue
+        button.BackgroundColor3 = value and Color3.fromRGB(80, 180, 80) or Color3.fromRGB(60, 60, 60)
+        button.Text = value and "ON" or "OFF"
+        if callback then callback(newValue) end
+    end)
+    
+    return frame, button
+end
+
+function UI:createOptionString(parent, optionName, value, callback)
+    local frame = Instance.new("Frame")
+    frame.BackgroundTransparency = 1
+    frame.Size = UDim2.new(1, 0, 0, 40)
+    frame.Parent = parent
+    
+    local label = Instance.new("TextLabel")
+    label.BackgroundTransparency = 1
+    label.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    label.Position = UDim2.new(0.05, 0, 0, 0)
+    label.Size = UDim2.new(0.3, 0, 1, 0)
+    label.Text = optionName:gsub("^%l", string.upper)
+    label.TextColor3 = Color3.fromRGB(200, 200, 200)
+    label.TextSize = 16
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.Parent = frame
+    
+    local box = Instance.new("TextBox")
+    box.BackgroundColor3 = Color3.fromRGB(30, 32, 40)
+    box.Position = UDim2.new(0.35, 0, 0.1, 0)
+    box.Size = UDim2.new(0.6, 0, 0.8, 0)
+    box.Text = value or ""
+    box.TextColor3 = Color3.fromRGB(255, 255, 255)
+    box.TextSize = 14
+    box.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    box.ClearTextOnFocus = false
+    box.Parent = frame
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 8)
+    corner.Parent = box
+    
+    box.FocusLost:Connect(function(enter)
+        if enter then
+            local newValue = box.Text
+            if callback then callback(newValue) end
+        end
+    end)
+    
+    return frame, box
+end
+
+function UI:createLoadButton(parent)
+    local btn = Instance.new("TextButton")
+    btn.BackgroundColor3 = Color3.fromRGB(80, 100, 200)
+    btn.BorderSizePixel = 0
+    btn.Position = UDim2.new(0.55, 0, 0.79, 0)
+    btn.Size = UDim2.new(0, 340, 0, 47)
+    btn.Text = "▶ EXECUTE"
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextSize = 18
+    btn.TextWrapped = true
+    btn.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    btn.Parent = parent
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 25)
+    corner.Parent = btn
+    
+    btn.MouseEnter:Connect(function()
+        Utility.animate(btn, {BackgroundColor3 = Color3.fromRGB(100, 120, 220)})
+    end)
+    btn.MouseLeave:Connect(function()
+        Utility.animate(btn, {BackgroundColor3 = Color3.fromRGB(80, 100, 200)})
+    end)
+    
+    return btn
+end
+
+function UI:createStatusLabel(parent)
+    local label = Instance.new("TextLabel")
+    label.BackgroundTransparency = 1
+    label.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    label.Position = UDim2.new(0.62, 0, 0.45, 0)
+    label.Size = UDim2.new(0.3, 0, 0.05, 0)
+    label.Text = "No script selected"
+    label.TextColor3 = Color3.fromRGB(200, 200, 200)
+    label.TextSize = 18
+    label.TextXAlignment = Enum.TextXAlignment.Center
+    label.Parent = parent
+    return label
+end
+
+-- ============================================================================
+-- UI CONTROLLER
+-- ============================================================================
+
+local UIController = {
+    gui = nil,
+    mainFrame = nil,
+    gameFrames = {},
+    optionPanels = {},
+    selectedGame = nil,
+    selectedStroke = nil,
+}
+
+function UIController:init()
+    loadState()
+    
+    self.gui = UI:createRoot()
+    self.mainFrame = UI:createMainFrame(self.gui)
+    
+    UI:createDraggableTitle(self.mainFrame, CONFIG.GUI_NAME)
+    
+    local closeBtn = UI:createCloseButton(self.mainFrame)
+    closeBtn.MouseButton1Click:Connect(function()
+        self.gui:Destroy()
+    end)
+    
+    UI:createLogo(self.mainFrame)
+    
+    local statusLabel = UI:createStatusLabel(self.mainFrame)
+    local loadBtn = UI:createLoadButton(self.mainFrame)
+    
+    local gamesContainer, layout = UI:createGameList(self.mainFrame)
+    
+    for gameName, config in pairs(GameConfigs) do
+        local frame, stroke, label = UI:createGameButton(gamesContainer, gameName, config)
+        self.gameFrames[gameName] = { frame = frame, stroke = stroke, label = label }
+        
+        if next(config.options) then
+            local panel, panelLayout = UI:createOptionsPanel(self.mainFrame, gameName, config)
+            self.optionPanels[gameName] = panel
+            
+            for optionName, optionDef in pairs(config.options) do
+                if optionDef.type == "toggle" then
+                    local value = State.configs[gameName] and State.configs[gameName][optionName] or optionDef.default
+                    UI:createOptionToggle(panel, optionName, value, function(newValue)
+                        State.configs[gameName][optionName] = newValue
+                        saveState()
+                    end)
+                elseif optionDef.type == "string" then
+                    local value = State.configs[gameName] and State.configs[gameName][optionName] or optionDef.default
+                    UI:createOptionString(panel, optionName, value, function(newValue)
+                        State.configs[gameName][optionName] = newValue
+                        saveState()
+                    end)
+                end
+            end
+        end
+        
+        -- Preload heavy scripts in background
+        if config.preload then
+            config:preloadScript()
+        end
+    end
+    
+    if State.selectedGame and self.gameFrames[State.selectedGame] then
+        self:selectGame(State.selectedGame, statusLabel)
+    end
+    
+    self:setupGameSelection(statusLabel)
+    self:setupDragging()
+    self:setupLoadButton(loadBtn, statusLabel)
+end
+
+function UIController:selectGame(gameName, statusLabel)
+    if self.selectedGame and self.gameFrames[self.selectedGame] then
+        local prev = self.gameFrames[self.selectedGame]
+        if prev.stroke then
+            prev.stroke.Color = Color3.fromRGB(27, 30, 38)
+        end
+        if self.optionPanels[self.selectedGame] then
+            self.optionPanels[self.selectedGame].Visible = false
+        end
+    end
+    
+    self.selectedGame = gameName
+    State.selectedGame = gameName
+    saveState()
+    
+    local current = self.gameFrames[gameName]
+    if current and current.stroke then
+        current.stroke.Color = Color3.fromRGB(140, 155, 208)
+    end
+    
+    if self.optionPanels[gameName] then
+        self.optionPanels[gameName].Visible = true
+        Utility.animate(self.optionPanels[gameName], {Position = UDim2.new(1.05, 0, 0, 0)})
+    end
+    
+    if statusLabel then
+        statusLabel.Text = "Selected: " .. GameConfigs[gameName].displayName
+        statusLabel.TextColor3 = Color3.fromRGB(140, 200, 255)
+    end
+end
+
+function UIController:setupGameSelection(statusLabel)
+    for gameName, data in pairs(self.gameFrames) do
+        data.label.InputBegan:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                selectedGame = gameName
-                selectedScriptLabel.Text = "Selected: " .. gameName
-
-                if selectedStroke then
-                    selectedStroke.Color = Color3.fromRGB(27, 30, 38)
-                end
-
-                local newStroke = frame:FindFirstChildOfClass("UIStroke")
-                if newStroke then
-                    newStroke.Color = Color3.fromRGB(140, 155, 208)
-                    selectedStroke = newStroke
-                end
-
-                counterbloxOptionsFrame.Visible = (gameName == "Counterblox")
-                rivalsOptionsFrame.Visible = (gameName == "Rivals")
-                --overkillKeyFrame.Visible = (gameName == "Overkill")
+                self:selectGame(gameName, statusLabel)
             end
         end)
     end
 end
 
-closeBtn.MouseButton1Click:Connect(function()
-    mainGui:Destroy()
-end)
+function UIController:setupDragging()
+    local dragging = false
+    local dragStart = nil
+    local startPos = nil
+    
+    self.mainFrame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+            dragStart = input.Position
+            startPos = self.mainFrame.Position
+        end
+    end)
+    
+    Services.UserInput.InputChanged:Connect(function(input)
+        if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+            local delta = input.Position - dragStart
+            self.mainFrame.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end)
+    
+    Services.UserInput.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = false
+        end
+    end)
+end
 
-local dragging,dragStart,startPos = false, nil, nil
-mainFrame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        dragStart = input.Position
-        startPos = mainFrame.Position
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
+function UIController:setupLoadButton(button, statusLabel)
+    button.MouseButton1Click:Connect(function()
+        if State.isLoading then return end
+        
+        local gameName = self.selectedGame
+        if not gameName then
+            statusLabel.Text = "⚠ Please select a game first!"
+            statusLabel.TextColor3 = Color3.fromRGB(255, 200, 100)
+            return
+        end
+        
+        local config = GameConfigs[gameName]
+        if not config then return end
+        
+        State.isLoading = true
+        statusLabel.Text = "⏳ Loading " .. config.displayName .. "..."
+        statusLabel.TextColor3 = Color3.fromRGB(255, 255, 100)
+        button.Text = "⏳ LOADING..."
+        button.BackgroundColor3 = Color3.fromRGB(255, 180, 50)
+        button.Enabled = false
+        
+        task.spawn(function()
+            local startTime = tick()
+            local success, err = pcall(function()
+                config.executor(State.configs[gameName])
+            end)
+            local loadTime = tick() - startTime
+            
+            State.isLoading = false
+            button.Enabled = true
+            
+            if success then
+                statusLabel.Text = "✅ " .. config.displayName .. " loaded! (" .. string.format("%.1f", loadTime) .. "s)"
+                statusLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
+                button.Text = "✓ DONE"
+                button.BackgroundColor3 = Color3.fromRGB(80, 200, 80)
+                
+                task.wait(1.5)
+                button.Text = "▶ EXECUTE"
+                button.BackgroundColor3 = Color3.fromRGB(80, 100, 200)
+            else
+                statusLabel.Text = "❌ Error: " .. tostring(err):sub(1, 50)
+                statusLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+                button.Text = "⚠ RETRY"
+                button.BackgroundColor3 = Color3.fromRGB(200, 80, 80)
+                
+                task.wait(2)
+                button.Text = "▶ EXECUTE"
+                button.BackgroundColor3 = Color3.fromRGB(80, 100, 200)
             end
         end)
-    end
-end)
-
-userinpt.InputChanged:Connect(function(input)
-    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-        local delta = input.Position - dragStart
-        mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    end
-end)
-
-counterbloxVersionBtn.MouseButton1Click:Connect(function()
-    if counterbloxVersionBtn.Text == "Old" then
-        counterbloxVersionBtn.Text = "New"
-        counterbloxVersion = "New"
-    else
-        counterbloxVersionBtn.Text = "Old"
-        counterbloxVersion = "Old"
-    end
-end)
-
-rivalsAutoloadBtn.MouseButton1Click:Connect(function()
-    if rivalsAutoloadBtn.Text == "On" then
-        rivalsAutoloadBtn.Text = "Off"
-        rivalsAutoload = false
-    else
-        rivalsAutoloadBtn.Text = "On"
-        rivalsAutoload = true
-    end
-end)
-
-rivalsSilentloadBtn.MouseButton1Click:Connect(function()
-    if rivalsSilentloadBtn.Text == "On" then
-        rivalsSilentloadBtn.Text = "Off"
-        rivalsSilentload = false
-    else
-        rivalsSilentloadBtn.Text = "On"
-        rivalsSilentload = true
-    end
-end)
-
-rivalsVersionBtn.MouseButton1Click:Connect(function()
-    if rivalsVersionBtn.Text == "V2" then
-        rivalsVersionBtn.Text = "V1"
-        rivalsVersion = "V1"
-    else
-        rivalsVersionBtn.Text = "V2"
-        rivalsVersion = "V2"
-    end
-end)
-overkillKeyBox.FocusLost:Connect(function(enterPressed)
-    overkillKey = overkillKeyBox.Text
-    pcall(function()
-        makefolder("Z3US/Overkill")
-        writefile("Z3US/Overkill/key.json", overkillKeyBox.Text)
     end)
+end
+
+-- ============================================================================
+-- INITIALIZATION
+-- ============================================================================
+
+local success, err = pcall(function()
+    UIController:init()
 end)
-loadBtn.MouseButton1Click:Connect(function()
-    if selectedGame == "" then return end
 
-    if selectedGame == "Overkill" then
-        loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/d603ee0150fbdeb809a036562925966619d3e145a77b4d07b222b0612022ab8f/download"))()
-    elseif selectedGame == "Counterblox" then
-        if counterbloxVersion == "New" then
-            cloneref(game:GetService("Players").LocalPlayer:Kick("This script is detected and will get u banned"))
-        else
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
-        end
-
-    elseif selectedGame == "GunFight" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Gunfight%20Arena.lua"))()
-
-    elseif selectedGame == "Universal" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Universal.lua"))()
-
-    elseif selectedGame == "Rivals" then
-        if rivalsVersion == "V2" then
-            getgenv().autoload = rivalsAutoload
-            getgenv().silentload = rivalsSilentload
-            getgenv().SCRIPT_KEY = ""
-            loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/2438cfd42af811d55492e854318eeda24a73aa5d0b11a403ec1f7542abd8f2f0/download"))()
-        else
-            repeat task.wait() until game:IsLoaded()
-            repeat task.wait() until cloneref(game:GetService("Players").LocalPlayer) and cloneref(game:GetService("Players").LocalPlayer.Character)
-            repeat task.wait() until not cloneref(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("LoadingScreen"))
-            getgenv().autoload = rivalsAutoload
-            getgenv().silentload = rivalsSilentload
-            getgenv().SCRIPT_KEY = ""
-            loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/8be52e21a0145a401c446ca7ab2b5df9bd327ea80b0cf1d2fe99e442edd0f9c9/download"))()
-        end
-
-    elseif selectedGame == "Planks" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua"))()
-
-    elseif selectedGame == "OneTap" then
-        getgenv().SCRIPT_KEY = ""
-        loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/2548ffbebdf21063cd4083f93a27ac276d44d1cb6503093d9c3290c3dfd954e3/download"))()
-
-    elseif selectedGame == "Arsenal" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Arsenal%20Beta.lua"))()
-    end
-end)
+if not success then
+    warn("[Z3US] Failed to initialize:", err)
+    task.wait(1)
+    pcall(function()
+        UIController:init()
+    end)
+end
