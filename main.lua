@@ -14,7 +14,7 @@
 ]]
 
 -- ============================================================================
--- 1. CONFIGURATION ENGINE
+-- CONFIGURATION
 -- ============================================================================
 
 local CONFIG = {
@@ -55,7 +55,7 @@ local CONFIG = {
 }
 
 -- ============================================================================
--- 2. CORE ENGINE
+-- CORE ENGINE
 -- ============================================================================
 
 local Engine = {
@@ -70,7 +70,6 @@ local Engine = {
     startupTime = tick(),
 }
 
--- Initialize all services
 Engine.Services = {
     Players = cloneref(game:GetService("Players")),
     CoreGui = cloneref(game:GetService("CoreGui") or gethui()),
@@ -89,7 +88,7 @@ Engine.Services = {
 Engine.LocalPlayer = Engine.Services.Players.LocalPlayer
 
 -- ============================================================================
--- 3. ADVANCED UTILITY SYSTEM
+-- UTILITY SYSTEM
 -- ============================================================================
 
 local Utility = {
@@ -214,67 +213,6 @@ local Utility = {
         return tween
     end,
     
-    measure = function(func, label)
-        local start = tick()
-        local success, result = pcall(func)
-        local elapsed = tick() - start
-        
-        if CONFIG.ENABLE_ANALYTICS then
-            table.insert(Engine.Performance, {
-                label = label or "unnamed",
-                time = elapsed,
-                success = success,
-                timestamp = tick()
-            })
-            if #Engine.Performance > 1000 then
-                table.remove(Engine.Performance, 1)
-            end
-        end
-        
-        return success, result, elapsed
-    end,
-    
-    debounce = function(func, delay, immediate)
-        local cooldown = false
-        local timer = nil
-        local pending = false
-        local pendingArgs = nil
-        
-        return function(...)
-            local args = {...}
-            
-            if immediate and not cooldown then
-                func(unpack(args))
-            end
-            
-            if timer then
-                timer:Disconnect()
-                timer = nil
-                pending = true
-                pendingArgs = args
-                return
-            end
-            
-            if not cooldown then
-                cooldown = true
-                
-                timer = Engine.Services.RunService.Heartbeat:Connect(function()
-                    if pending then
-                        func(unpack(pendingArgs))
-                        pending = false
-                        pendingArgs = nil
-                    else
-                        func(unpack(args))
-                    end
-                    
-                    timer:Disconnect()
-                    timer = nil
-                    cooldown = false
-                end)
-            end
-        end
-    end,
-    
     table = {
         deepCopy = function(t)
             local copy = {}
@@ -300,33 +238,6 @@ local Utility = {
             return result
         end,
         
-        find = function(t, predicate)
-            for k, v in pairs(t) do
-                if predicate(k, v) then
-                    return v
-                end
-            end
-            return nil
-        end,
-        
-        filter = function(t, predicate)
-            local result = {}
-            for k, v in pairs(t) do
-                if predicate(k, v) then
-                    result[k] = v
-                end
-            end
-            return result
-        end,
-        
-        map = function(t, transform)
-            local result = {}
-            for k, v in pairs(t) do
-                result[k] = transform(k, v)
-            end
-            return result
-        end,
-        
         size = function(t)
             local count = 0
             for _ in pairs(t) do
@@ -334,70 +245,17 @@ local Utility = {
             end
             return count
         end
-    },
-    
-    string = {
-        split = function(str, delimiter)
-            local result = {}
-            for match in (str .. delimiter):gmatch("(.-)" .. delimiter) do
-                table.insert(result, match)
-            end
-            return result
-        end,
-        
-        trim = function(str)
-            return str:match("^%s*(.-)%s*$")
-        end,
-        
-        startsWith = function(str, prefix)
-            return string.sub(str, 1, #prefix) == prefix
-        end,
-        
-        endsWith = function(str, suffix)
-            return string.sub(str, -#suffix) == suffix
-        end,
-        
-        contains = function(str, substring)
-            return string.find(str, substring, 1, true) ~= nil
-        end
-    },
-    
-    color = {
-        hexToRgb = function(hex)
-            hex = hex:gsub("#", "")
-            local r = tonumber("0x" .. hex:sub(1, 2)) / 255
-            local g = tonumber("0x" .. hex:sub(3, 4)) / 255
-            local b = tonumber("0x" .. hex:sub(5, 6)) / 255
-            return Color3.new(r, g, b)
-        end,
-        
-        rgbToHex = function(color)
-            return string.format("#%02x%02x%02x",
-                math.floor(color.R * 255),
-                math.floor(color.G * 255),
-                math.floor(color.B * 255)
-            )
-        end,
-        
-        lerp = function(c1, c2, t)
-            return Color3.new(
-                c1.R + (c2.R - c1.R) * t,
-                c1.G + (c2.G - c1.G) * t,
-                c1.B + (c2.B - c1.B) * t
-            )
-        end
     }
 }
 
 -- ============================================================================
--- 4. SCRIPT MANAGEMENT SYSTEM
+-- SCRIPT MANAGER
 -- ============================================================================
 
 local ScriptManager = {
     _scripts = {},
     _loaded = {},
     _preloading = false,
-    _preloadQueue = {},
     _executionHistory = {},
     _errors = {},
     
@@ -415,14 +273,12 @@ local ScriptManager = {
             options = scriptData.options or {},
             isHeavy = scriptData.isHeavy or false,
             preload = scriptData.preload or false,
-            dependencies = scriptData.dependencies or {},
             executor = scriptData.executor,
             config = {},
             lastLoaded = nil,
             loadCount = 0,
             totalLoadTime = 0,
             _cachedContent = nil,
-            _cacheTime = nil,
             preloaded = false,
             loaded = false,
         }
@@ -440,7 +296,6 @@ local ScriptManager = {
             local content = Utility.http.getCached(script.url)
             if content then
                 script._cachedContent = content
-                script._cacheTime = tick()
             end
         end)
     end,
@@ -468,15 +323,6 @@ local ScriptManager = {
         
         script.config = Utility.table.merge(script.config, config or {})
         
-        for _, depId in ipairs(script.dependencies) do
-            if not self._loaded[depId] then
-                local success, err = self:execute(depId)
-                if not success then
-                    return false, "Dependency failed: " .. err
-                end
-            end
-        end
-        
         local content = script._cachedContent or Utility.http.get(script.url)
         if not content then
             return false, "Failed to download script"
@@ -495,21 +341,8 @@ local ScriptManager = {
             self._loaded[scriptId] = true
             script.loaded = true
             
-            table.insert(self._executionHistory, {
-                scriptId = scriptId,
-                time = loadTime,
-                timestamp = tick(),
-                success = true
-            })
-            
             return true, "Loaded successfully in " .. string.format("%.2f", loadTime) .. "s"
         else
-            table.insert(self._errors, {
-                scriptId = scriptId,
-                error = err,
-                timestamp = tick()
-            })
-            
             return false, err
         end
     end,
@@ -526,28 +359,11 @@ local ScriptManager = {
             end
         end
         return result
-    end,
-    
-    getStats = function(self)
-        local totalLoads = 0
-        local totalTime = 0
-        for id, script in pairs(self._scripts) do
-            totalLoads = totalLoads + script.loadCount
-            totalTime = totalTime + script.totalLoadTime
-        end
-        
-        return {
-            totalScripts = Utility.table.size(self._scripts),
-            loadedScripts = Utility.table.size(self._loaded),
-            totalLoads = totalLoads,
-            averageLoadTime = totalLoads > 0 and totalTime / totalLoads or 0,
-            errors = #self._errors
-        }
     end
 }
 
 -- ============================================================================
--- 5. REGISTER ALL SCRIPTS
+-- REGISTER SCRIPTS
 -- ============================================================================
 
 ScriptManager:register({
@@ -562,7 +378,6 @@ ScriptManager:register({
     options = {
         aimbot = { type = "toggle", label = "Aimbot", default = true },
         esp = { type = "toggle", label = "ESP", default = true },
-        silent = { type = "toggle", label = "Silent Aim", default = false },
     },
     executor = function(content, config)
         getgenv().Z3US_CONFIG = config
@@ -612,11 +427,6 @@ ScriptManager:register({
                 pcall(function()
                     game:GetService("UserSettings"):GetService("UserGameSettings").GraphicsQuality = 1
                     game:GetService("Lighting").GlobalShadows = false
-                    if settings then
-                        pcall(function()
-                            settings().Rendering.QualityLevel = 1
-                        end)
-                    end
                     if getgenv then
                         getgenv().FPS_LIMIT = 60
                     end
@@ -726,7 +536,7 @@ ScriptManager:register({
 })
 
 -- ============================================================================
--- 6. UI SYSTEM
+-- UI SYSTEM (COMPLETE)
 -- ============================================================================
 
 local UI = {
@@ -744,7 +554,6 @@ local UI = {
         self:buildFooter()
         self:setupDragging()
         self:setupKeybinds()
-        
         ScriptManager:preloadAll()
         self:showNotification("🚀 Z3US Ultimate v" .. CONFIG.VERSION .. " loaded!")
     end,
@@ -767,7 +576,6 @@ local UI = {
         frame.Size = UDim2.new(0.9, 0, 0.94, 0)
         frame.Parent = self._instance
         
-        -- Glass Effect
         local glass = Instance.new("Frame")
         glass.Name = "GlassEffect"
         glass.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -776,7 +584,6 @@ local UI = {
         glass.Size = UDim2.new(1, 0, 1, 0)
         glass.Parent = frame
         
-        -- Shadow
         local shadow = Instance.new("Frame")
         shadow.Name = "Shadow"
         shadow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -787,12 +594,10 @@ local UI = {
         shadow.ZIndex = -1
         shadow.Parent = frame
         
-        -- Corner
         local corner = Instance.new("UICorner")
         corner.CornerRadius = UDim.new(0, 16)
         corner.Parent = frame
         
-        -- Border Glow
         local glow = Instance.new("Frame")
         glow.Name = "Glow"
         glow.BackgroundColor3 = self._theme.primary
@@ -807,21 +612,9 @@ local UI = {
         glowCorner.CornerRadius = UDim.new(0, 18)
         glowCorner.Parent = glow
         
-        -- Gradient overlay
-        local gradient = Instance.new("UIGradient")
-        gradient.Rotation = 45
-        gradient.Color = ColorSequence.new({
-            ColorSequenceKeypoint.new(0, self._theme.background),
-            ColorSequenceKeypoint.new(1, self._theme.surface)
-        })
-        gradient.Parent = frame
-        
         self._components.mainFrame = frame
-        
-        -- Animate entrance
         frame.Position = UDim2.new(0.05, 0, -0.5, 0)
         Utility.animate(frame, {Position = UDim2.new(0.05, 0, 0.03, 0)}, 0.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-        
         return frame
     end,
     
@@ -838,7 +631,6 @@ local UI = {
         corner.CornerRadius = UDim.new(0, 16)
         corner.Parent = header
         
-        -- Logo
         local logo = Instance.new("TextLabel")
         logo.Name = "Logo"
         logo.BackgroundTransparency = 1
@@ -851,7 +643,6 @@ local UI = {
         logo.TextXAlignment = Enum.TextXAlignment.Left
         logo.Parent = header
         
-        -- Version badge
         local badge = Instance.new("TextLabel")
         badge.Name = "Badge"
         badge.BackgroundColor3 = self._theme.primary
@@ -859,17 +650,15 @@ local UI = {
         badge.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
         badge.Position = UDim2.new(0.12, 0, 0.2, 0)
         badge.Size = UDim2.new(0, 100, 0, 30)
-        badge.Text = "v" .. CONFIG.VERSION .. " Build " .. CONFIG.BUILD
+        badge.Text = "v" .. CONFIG.VERSION
         badge.TextColor3 = self._theme.textSecondary
         badge.TextSize = 12
-        badge.TextXAlignment = Enum.TextXAlignment.Center
         badge.Parent = header
         
         local badgeCorner = Instance.new("UICorner")
         badgeCorner.CornerRadius = UDim.new(0, 8)
         badgeCorner.Parent = badge
         
-        -- Close Button
         local close = Instance.new("TextButton")
         close.Name = "CloseButton"
         close.BackgroundTransparency = 1
@@ -880,47 +669,8 @@ local UI = {
         close.TextSize = 22
         close.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
         close.Parent = header
-        
-        close.MouseEnter:Connect(function()
-            Utility.animate(close, {TextColor3 = self._theme.danger}, 0.1)
-        end)
-        close.MouseLeave:Connect(function()
-            Utility.animate(close, {TextColor3 = self._theme.textSecondary}, 0.1)
-        end)
         close.MouseButton1Click:Connect(function()
             self._instance:Destroy()
-        end)
-        
-        -- Minimize Button
-        local minimize = Instance.new("TextButton")
-        minimize.Name = "MinimizeButton"
-        minimize.BackgroundTransparency = 1
-        minimize.Position = UDim2.new(0.94, 0, 0.15, 0)
-        minimize.Size = UDim2.new(0, 45, 0, 45)
-        minimize.Text = "─"
-        minimize.TextColor3 = self._theme.textSecondary
-        minimize.TextSize = 22
-        minimize.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-        minimize.Parent = header
-        
-        local isMinimized = false
-        minimize.MouseButton1Click:Connect(function()
-            isMinimized = not isMinimized
-            if isMinimized then
-                Utility.animate(self._components.mainFrame, {Size = UDim2.new(0.9, 0, 0.1, 0)}, 0.3)
-                for _, child in ipairs(self._components.mainFrame:GetChildren()) do
-                    if child.Name ~= "Header" and child.Name ~= "Glow" and child.Name ~= "Shadow" and child.Name ~= "GlassEffect" then
-                        child.Visible = false
-                    end
-                end
-            else
-                Utility.animate(self._components.mainFrame, {Size = UDim2.new(0.9, 0, 0.94, 0)}, 0.3)
-                for _, child in ipairs(self._components.mainFrame:GetChildren()) do
-                    if child.Name ~= "Header" and child.Name ~= "Glow" and child.Name ~= "Shadow" and child.Name ~= "GlassEffect" then
-                        child.Visible = true
-                    end
-                end
-            end
         end)
         
         self._components.header = header
@@ -940,7 +690,6 @@ local UI = {
         corner.CornerRadius = UDim.new(0, 12)
         corner.Parent = sidebar
         
-        -- Search Box
         local search = Instance.new("TextBox")
         search.Name = "SearchBox"
         search.BackgroundColor3 = self._theme.surfaceHover
@@ -948,7 +697,432 @@ local UI = {
         search.Position = UDim2.new(0.05, 0, 0.02, 0)
         search.Size = UDim2.new(0.9, 0, 0.08, 0)
         search.PlaceholderText = "🔍 Search scripts..."
-        search.Text = ""
         search.TextColor3 = self._theme.text
         search.TextSize = 14
-        search.FontFace = Font.new("rbxasset://fonts/families/Nun
+        search.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        search.Parent = sidebar
+        
+        local container = Instance.new("ScrollingFrame")
+        container.Name = "ScriptList"
+        container.BackgroundTransparency = 1
+        container.BorderSizePixel = 0
+        container.Position = UDim2.new(0.02, 0, 0.12, 0)
+        container.Size = UDim2.new(0.96, 0, 0.85, 0)
+        container.ScrollBarThickness = 3
+        container.ScrollBarImageColor3 = self._theme.primary
+        container.CanvasSize = UDim2.new(0, 0, 0, 0)
+        container.Parent = sidebar
+        
+        local layout = Instance.new("UIListLayout")
+        layout.Padding = UDim.new(0, 4)
+        layout.SortOrder = Enum.SortOrder.LayoutOrder
+        layout.Parent = container
+        
+        local canvasHeight = 0
+        local scripts = ScriptManager:getAll()
+        for id, script in pairs(scripts) do
+            local button = Instance.new("TextButton")
+            button.BackgroundColor3 = self._theme.surface
+            button.BackgroundTransparency = 0.9
+            button.BorderSizePixel = 0
+            button.Size = UDim2.new(1, 0, 0, 50)
+            button.Text = ""
+            button.Parent = container
+            
+            local btnCorner = Instance.new("UICorner")
+            btnCorner.CornerRadius = UDim.new(0, 8)
+            btnCorner.Parent = button
+            
+            local name = Instance.new("TextLabel")
+            name.BackgroundTransparency = 1
+            name.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+            name.Position = UDim2.new(0.05, 0, 0, 0)
+            name.Size = UDim2.new(0.8, 0, 1, 0)
+            name.Text = script.name
+            name.TextColor3 = self._theme.text
+            name.TextSize = 16
+            name.TextXAlignment = Enum.TextXAlignment.Left
+            name.Parent = button
+            
+            button._scriptId = id
+            button._scriptName = script.name
+            
+            button.MouseButton1Click:Connect(function()
+                self:selectScript(id)
+            end)
+            
+            canvasHeight = canvasHeight + 55
+        end
+        container.CanvasSize = UDim2.new(0, 0, 0, canvasHeight)
+        
+        search.Changed:Connect(function()
+            local query = search.Text:lower()
+            for _, child in ipairs(container:GetChildren()) do
+                if child:IsA("TextButton") then
+                    local name = child._scriptName or ""
+                    child.Visible = name:lower():find(query) ~= nil
+                end
+            end
+        end)
+    end,
+    
+    buildMainContent = function(self)
+        local content = Instance.new("Frame")
+        content.Name = "Content"
+        content.BackgroundColor3 = self._theme.surface
+        content.BackgroundTransparency = 0.3
+        content.BorderSizePixel = 0
+        content.Position = UDim2.new(0.225, 0, 0.13, 0)
+        content.Size = UDim2.new(0.765, 0, 0.82, 0)
+        content.Parent = self._components.mainFrame
+        
+        local corner = Instance.new("UICorner")
+        corner.CornerRadius = UDim.new(0, 12)
+        corner.Parent = content
+        
+        local infoPanel = Instance.new("Frame")
+        infoPanel.Name = "InfoPanel"
+        infoPanel.BackgroundColor3 = self._theme.background
+        infoPanel.BackgroundTransparency = 0.5
+        infoPanel.BorderSizePixel = 0
+        infoPanel.Position = UDim2.new(0.03, 0, 0.03, 0)
+        infoPanel.Size = UDim2.new(0.94, 0, 0.25, 0)
+        infoPanel.Parent = content
+        
+        local infoCorner = Instance.new("UICorner")
+        infoCorner.CornerRadius = UDim.new(0, 10)
+        infoCorner.Parent = infoPanel
+        
+        local name = Instance.new("TextLabel")
+        name.Name = "ScriptName"
+        name.BackgroundTransparency = 1
+        name.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+        name.Position = UDim2.new(0.03, 0, 0.1, 0)
+        name.Size = UDim2.new(0.8, 0, 0.35, 0)
+        name.Text = "Select a script"
+        name.TextColor3 = self._theme.text
+        name.TextSize = 22
+        name.TextXAlignment = Enum.TextXAlignment.Left
+        name.Parent = infoPanel
+        
+        local desc = Instance.new("TextLabel")
+        desc.Name = "ScriptDescription"
+        desc.BackgroundTransparency = 1
+        desc.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        desc.Position = UDim2.new(0.03, 0, 0.5, 0)
+        desc.Size = UDim2.new(0.9, 0, 0.4, 0)
+        desc.Text = "Click a script to view details"
+        desc.TextColor3 = self._theme.textSecondary
+        desc.TextSize = 14
+        desc.TextWrapped = true
+        desc.TextXAlignment = Enum.TextXAlignment.Left
+        desc.Parent = infoPanel
+        
+        local optionsPanel = Instance.new("Frame")
+        optionsPanel.Name = "OptionsPanel"
+        optionsPanel.BackgroundColor3 = self._theme.background
+        optionsPanel.BackgroundTransparency = 0.5
+        optionsPanel.BorderSizePixel = 0
+        optionsPanel.Position = UDim2.new(0.03, 0, 0.32, 0)
+        optionsPanel.Size = UDim2.new(0.94, 0, 0.45, 0)
+        optionsPanel.Parent = content
+        
+        local optionsCorner = Instance.new("UICorner")
+        optionsCorner.CornerRadius = UDim.new(0, 10)
+        optionsCorner.Parent = optionsPanel
+        
+        local optionsLabel = Instance.new("TextLabel")
+        optionsLabel.Name = "OptionsLabel"
+        optionsLabel.BackgroundTransparency = 1
+        optionsLabel.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        optionsLabel.Position = UDim2.new(0.03, 0, 0.05, 0)
+        optionsLabel.Size = UDim2.new(0.5, 0, 0.25, 0)
+        optionsLabel.Text = "⚙️ Options"
+        optionsLabel.TextColor3 = self._theme.text
+        optionsLabel.TextSize = 16
+        optionsLabel.TextXAlignment = Enum.TextXAlignment.Left
+        optionsLabel.Parent = optionsPanel
+        
+        local optionsContainer = Instance.new("Frame")
+        optionsContainer.Name = "OptionsContainer"
+        optionsContainer.BackgroundTransparency = 1
+        optionsContainer.Position = UDim2.new(0.03, 0, 0.3, 0)
+        optionsContainer.Size = UDim2.new(0.94, 0, 0.65, 0)
+        optionsContainer.Parent = optionsPanel
+        
+        local loadBtn = Instance.new("TextButton")
+        loadBtn.Name = "LoadButton"
+        loadBtn.BackgroundColor3 = self._theme.primary
+        loadBtn.BorderSizePixel = 0
+        loadBtn.Position = UDim2.new(0.35, 0, 0.82, 0)
+        loadBtn.Size = UDim2.new(0.3, 0, 0.12, 0)
+        loadBtn.Text = "▶ EXECUTE"
+        loadBtn.TextColor3 = self._theme.text
+        loadBtn.TextSize = 18
+        loadBtn.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+        loadBtn.Parent = content
+        
+        local loadCorner = Instance.new("UICorner")
+        loadCorner.CornerRadius = UDim.new(0, 8)
+        loadCorner.Parent = loadBtn
+        
+        loadBtn.MouseButton1Click:Connect(function()
+            self:executeSelected()
+        end)
+        
+        self._components.content = content
+        self._components.scriptName = name
+        self._components.scriptDesc = desc
+        self._components.optionsContainer = optionsContainer
+        self._components.loadButton = loadBtn
+    end,
+    
+    buildFooter = function(self)
+        local footer = Instance.new("Frame")
+        footer.Name = "Footer"
+        footer.BackgroundColor3 = self._theme.surface
+        footer.BackgroundTransparency = 0.5
+        footer.BorderSizePixel = 0
+        footer.Position = UDim2.new(0, 0, 0.95, 0)
+        footer.Size = UDim2.new(1, 0, 0.05, 0)
+        footer.Parent = self._components.mainFrame
+        
+        local status = Instance.new("TextLabel")
+        status.Name = "Status"
+        status.BackgroundTransparency = 1
+        status.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        status.Position = UDim2.new(0.01, 0, 0, 0)
+        status.Size = UDim2.new(0.7, 0, 1, 0)
+        status.Text = "🟢 Ready"
+        status.TextColor3 = self._theme.success
+        status.TextSize = 13
+        status.TextXAlignment = Enum.TextXAlignment.Left
+        status.Parent = footer
+        
+        self._components.statusLabel = status
+    end,
+    
+    showNotification = function(self, message, type)
+        local container = self._instance:FindFirstChild("NotificationContainer")
+        if not container then
+            container = Instance.new("Frame")
+            container.Name = "NotificationContainer"
+            container.BackgroundTransparency = 1
+            container.Position = UDim2.new(0.75, 0, 0.02, 0)
+            container.Size = UDim2.new(0.24, 0, 0.3, 0)
+            container.Parent = self._instance
+        end
+        
+        local notif = Instance.new("TextLabel")
+        notif.BackgroundColor3 = self._theme.surface
+        notif.BackgroundTransparency = 0.3
+        notif.BorderSizePixel = 0
+        notif.Size = UDim2.new(1, 0, 0, 35)
+        notif.Text = message
+        notif.TextColor3 = self._theme.text
+        notif.TextSize = 13
+        notif.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        notif.Parent = container
+        
+        local notifCorner = Instance.new("UICorner")
+        notifCorner.CornerRadius = UDim.new(0, 6)
+        notifCorner.Parent = notif
+        
+        notif.Position = UDim2.new(0, 0, -0.5, 0)
+        Utility.animate(notif, {Position = UDim2.new(0, 0, 0, 0)}, 0.3)
+        
+        task.delay(3, function()
+            Utility.animate(notif, {Position = UDim2.new(0, 0, -0.5, 0)}, 0.3)
+            task.wait(0.3)
+            notif:Destroy()
+        end)
+    end,
+    
+    setupDragging = function(self)
+        local dragStart = nil
+        local dragStartPos = nil
+        local isDragging = false
+        
+        self._components.header.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                isDragging = true
+                dragStart = input.Position
+                dragStartPos = self._components.mainFrame.Position
+            end
+        end)
+        
+        Engine.Services.UserInput.InputChanged:Connect(function(input)
+            if isDragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+                local delta = input.Position - dragStart
+                local mainFrame = self._components.mainFrame
+                mainFrame.Position = UDim2.new(
+                    dragStartPos.X.Scale,
+                    dragStartPos.X.Offset + delta.X,
+                    dragStartPos.Y.Scale,
+                    dragStartPos.Y.Offset + delta.Y
+                )
+            end
+        end)
+        
+        Engine.Services.UserInput.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                isDragging = false
+            end
+        end)
+    end,
+    
+    setupKeybinds = function(self)
+        Engine.Services.UserInput.InputBegan:Connect(function(input, gameProcessed)
+            if gameProcessed then return end
+            
+            if input.KeyCode == CONFIG.HOTKEYS.toggleUI then
+                self._instance.Enabled = not self._instance.Enabled
+                self:showNotification(self._instance.Enabled and "UI Shown" or "UI Hidden", "info")
+            end
+            
+            if input.KeyCode == CONFIG.HOTKEYS.reloadScripts then
+                self:showNotification("🔄 Reloading...", "info")
+                ScriptManager:preloadAll()
+                task.wait(0.5)
+                self:showNotification("✅ Reloaded!", "success")
+            end
+        end)
+    end,
+    
+    selectScript = function(self, scriptId)
+        local script = ScriptManager:getInfo(scriptId)
+        if not script then return end
+        
+        self._selectedScript = scriptId
+        self._components.scriptName.Text = script.name
+        self._components.scriptDesc.Text = script.description or "No description"
+        
+        -- Clear and rebuild options
+        local container = self._components.optionsContainer
+        for _, child in ipairs(container:GetChildren()) do
+            child:Destroy()
+        end
+        
+        if not script.options or next(script.options) == nil then
+            local label = Instance.new("TextLabel")
+            label.BackgroundTransparency = 1
+            label.Size = UDim2.new(1, 0, 1, 0)
+            label.Text = "ℹ️ No options available"
+            label.TextColor3 = self._theme.textSecondary
+            label.TextSize = 14
+            label.Parent = container
+            return
+        end
+        
+        local layout = Instance.new("UIListLayout")
+        layout.Padding = UDim.new(0, 8)
+        layout.SortOrder = Enum.SortOrder.LayoutOrder
+        layout.Parent = container
+        
+        for key, option in pairs(script.options) do
+            if option.type == "toggle" then
+                local frame = Instance.new("Frame")
+                frame.BackgroundTransparency = 1
+                frame.Size = UDim2.new(1, 0, 0, 40)
+                frame.Parent = container
+                
+                local label = Instance.new("TextLabel")
+                label.BackgroundTransparency = 1
+                label.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+                label.Position = UDim2.new(0, 0, 0, 0)
+                label.Size = UDim2.new(0.6, 0, 1, 0)
+                label.Text = option.label or key
+                label.TextColor3 = self._theme.text
+                label.TextSize = 16
+                label.TextXAlignment = Enum.TextXAlignment.Left
+                label.Parent = frame
+                
+                local btn = Instance.new("TextButton")
+                btn.BackgroundColor3 = option.default and self._theme.success or self._theme.surfaceHover
+                btn.BorderSizePixel = 0
+                btn.Position = UDim2.new(0.75, 0, 0.1, 0)
+                btn.Size = UDim2.new(0.2, 0, 0.8, 0)
+                btn.Text = option.default and "ON" or "OFF"
+                btn.TextColor3 = self._theme.text
+                btn.TextSize = 14
+                btn.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+                btn.Parent = frame
+                
+                local btnCorner = Instance.new("UICorner")
+                btnCorner.CornerRadius = UDim.new(0, 6)
+                btnCorner.Parent = btn
+                
+                local value = option.default or false
+                btn.MouseButton1Click:Connect(function()
+                    value = not value
+                    btn.Text = value and "ON" or "OFF"
+                    btn.BackgroundColor3 = value and self._theme.success or self._theme.surfaceHover
+                    local scriptObj = ScriptManager:getInfo(self._selectedScript)
+                    if scriptObj then
+                        scriptObj.config[key] = value
+                    end
+                end)
+            end
+        end
+    end,
+    
+    executeSelected = function(self)
+        if not self._selectedScript then
+            self:showNotification("⚠️ Select a script first!", "warning")
+            return
+        end
+        
+        local script = ScriptManager:getInfo(self._selectedScript)
+        if not script then return end
+        
+        local loadBtn = self._components.loadButton
+        local status = self._components.statusLabel
+        
+        loadBtn.Text = "⏳ LOADING..."
+        loadBtn.BackgroundColor3 = self._theme.warning
+        status.Text = "🔄 Loading " .. script.name .. "..."
+        status.TextColor3 = self._theme.warning
+        
+        local success, result = ScriptManager:execute(self._selectedScript, script.config)
+        
+        if success then
+            loadBtn.Text = "✓ DONE"
+            loadBtn.BackgroundColor3 = self._theme.success
+            status.Text = "✅ " .. result
+            status.TextColor3 = self._theme.success
+            self:showNotification("✅ " .. script.name .. " loaded!", "success")
+            
+            task.delay(2, function()
+                loadBtn.Text = "▶ EXECUTE"
+                loadBtn.BackgroundColor3 = self._theme.primary
+            end)
+        else
+            loadBtn.Text = "⚠ RETRY"
+            loadBtn.BackgroundColor3 = self._theme.danger
+            status.Text = "❌ Error: " .. result
+            status.TextColor3 = self._theme.danger
+            self:showNotification("❌ Error loading " .. script.name, "danger")
+            
+            task.delay(2, function()
+                loadBtn.Text = "▶ EXECUTE"
+                loadBtn.BackgroundColor3 = self._theme.primary
+            end)
+        end
+    end
+}
+
+-- ============================================================================
+-- INITIALIZE
+-- ============================================================================
+
+local success, err = pcall(function()
+    UI:init()
+end)
+
+if not success then
+    warn("[Z3US] Failed to initialize:", err)
+    task.wait(1)
+    pcall(function()
+        UI:init()
+    end)
+end
